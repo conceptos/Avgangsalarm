@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Avgangsalarm.Core.iOS
 {
+	// TODO: Kan flyttes til core dersom vi velger å benytte Microsoft.Net.Http via NuGet
 	public class TrafikkDataService : ITrafikkDataService
 	{
 		#region ITrafikkDataService implementation
