@@ -5,10 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8FCE3267-913B-4B25-8E79-76257052CE39}</ProjectGuid>
+    <ProjectGuid>{17F50F13-FBC7-44AD-9B0B-C0BC8B992147}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>Avgangsalarm.Core.Tests</RootNamespace>
-    <AssemblyName>Avgangsalarm.Core.Tests</AssemblyName>
+    <RootNamespace>Avgangsalarm.Core.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>Avgangsalarm.Core.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,12 +32,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="nunit.framework">
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -43,5 +45,8 @@
       <Project>{936B1171-6101-45E0-A4CC-EA72DEC0460F}</Project>
       <Name>Avgangsalarm.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EmptyClass.cs" />
   </ItemGroup>
 </Project>

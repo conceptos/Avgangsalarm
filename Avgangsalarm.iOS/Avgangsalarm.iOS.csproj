@@ -118,4 +118,10 @@
     <BundleResource Include="Resources\second%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Avgangsalarm.Core.iOS\Avgangsalarm.Core.iOS.csproj">
+      <Project>{17F50F13-FBC7-44AD-9B0B-C0BC8B992147}</Project>
+      <Name>Avgangsalarm.Core.iOS</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
