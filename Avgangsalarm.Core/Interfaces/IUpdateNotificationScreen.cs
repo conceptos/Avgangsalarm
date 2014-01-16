@@ -1,11 +1,8 @@
 using System;
 
-public interface ILog
+public interface IUpdateNotificationScreen
 {
-	void Info(string format, params object[] args);
-
-	void Warn(string format, params object[] args);
-
-	void Error(Exception exception);
+	void Notify(string message);
 }
+
 

@@ -2,8 +2,11 @@ using System;
 
 namespace Avgangsalarm.Core
 {
-	public interface ISaveLocations
+	public class Location
 	{
+		public Location ()
+		{
+		}
 	}
 }
 

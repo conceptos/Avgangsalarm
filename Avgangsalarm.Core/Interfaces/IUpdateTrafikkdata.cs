@@ -4,6 +4,7 @@ namespace Avgangsalarm.Core
 {
 	public interface IUpdateTrafikkdata
 	{
+		// TODO
 	}
 }
 
