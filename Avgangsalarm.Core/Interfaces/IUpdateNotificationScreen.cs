@@ -1,12 +1,11 @@
 using System;
 
-namespace Avgangsalarm.Core
+public interface ILog
 {
-	public interface IUpdateNotificationScreen
-	{
-		void Error();
-		void Information();
-		void Debug();
-	}
+	void Info(string format, params object[] args);
+
+	void Warn(string format, params object[] args);
+
+	void Error(Exception exception);
 }
 
