@@ -38,10 +38,17 @@
     <Compile Include="Interfaces\IListenForPositionChanges.cs" />
     <Compile Include="Interfaces\ILog.cs" />
     <Compile Include="Interfaces\IUpdateTrafikkdata.cs" />
+    <Compile Include="Services\Dtos\AvgangDto.cs" />
+    <Compile Include="Services\Dtos\FramedVehicleJourneyRef.cs" />
+    <Compile Include="Services\Dtos\VehicleFeatureRef.cs" />
+    <Compile Include="Services\Dtos\TrainBlockPart.cs" />
+    <Compile Include="Services\ITrafikkDataService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Dtos\" />
   </ItemGroup>
 </Project>
