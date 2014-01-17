@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Avgangsalarm.Core
+namespace Avgangsalarm.Core.Services
 {
 	public interface ILocationRepository
 	{

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Avgangsalarm.Core
 {
-	public interface ITrafikkDataService
+	public interface ITrafikkDatAdapter
 	{
 		Task<IEnumerable<LineDeparture>> GetLineDeparturesForStopId(int stopId);
 	}

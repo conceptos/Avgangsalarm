@@ -1,6 +1,6 @@
 using System;
 
-namespace Avgangsalarm.Core
+namespace Avgangsalarm.Core.Services
 {
 	public interface IUpdateTrafikkdata
 	{

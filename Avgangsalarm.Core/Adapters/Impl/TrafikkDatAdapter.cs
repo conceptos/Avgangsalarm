@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Avgangsalarm.Core
 {
-	public class TrafikkDataService : ITrafikkDataService
+	public class TrafikkDatAdapter : ITrafikkDatAdapter
 	{
 		#region ITrafikkDataService implementation
 

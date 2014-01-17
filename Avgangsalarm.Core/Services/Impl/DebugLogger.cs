@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace Avgangsalarm.Core
+namespace Avgangsalarm.Core.Services.Impl
 {
 	class DebugLogger : ILog
    	{

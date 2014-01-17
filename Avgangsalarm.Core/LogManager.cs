@@ -1,4 +1,6 @@
 using System;
+using Avgangsalarm.Core.Services;
+using Avgangsalarm.Core.Services.Impl;
 
 namespace Avgangsalarm.Core
 {
