@@ -106,6 +106,9 @@
     <Compile Include="SecondViewController.designer.cs">
       <DependentUpon>SecondViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceImpl\MonitorGeoFences.cs" />
+    <Compile Include="ServiceImpl\CLLocationManagerWrapper.cs" />
+    <Compile Include="ServiceImpl\ICLLocationManagerWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -123,5 +126,8 @@
       <Project>{2941C4B3-6418-424A-916B-305636C5FFF0}</Project>
       <Name>Avgangsalarm.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ServiceImpl\" />
   </ItemGroup>
 </Project>

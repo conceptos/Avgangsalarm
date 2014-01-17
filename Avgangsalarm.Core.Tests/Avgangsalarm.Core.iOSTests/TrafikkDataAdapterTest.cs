@@ -5,7 +5,7 @@ using System.Linq;
 namespace Avgangsalarm.Core.iOSTests
 {
 	[TestFixture]
-	public class TrafikkDataTests
+	public class TrafikkDataAdapterTest
 	{
 		TrafikkDatAdapter _sut;
 		private const int CarlBernersPlassStopId = 3011400;

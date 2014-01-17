@@ -101,13 +101,18 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="UnitTestAppDelegate.cs" />
-    <Compile Include="TrafikkDataTests.cs" />
+    <Compile Include="MonitorGeoFencesTest.cs" />
+    <Compile Include="TrafikkDataAdapterTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\..\Avgangsalarm.Core\Avgangsalarm.Core.csproj">
       <Project>{2941C4B3-6418-424A-916B-305636C5FFF0}</Project>
       <Name>Avgangsalarm.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Avgangsalarm.iOS\Avgangsalarm.iOS.csproj">
+      <Project>{09E17746-E5DF-4941-8B74-AFADFC073DDD}</Project>
+      <Name>Avgangsalarm.iOS</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

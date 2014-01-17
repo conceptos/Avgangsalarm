@@ -33,7 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Location.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="SimpleJson.cs" />
     <Compile Include="Utils\JsonDateTimeStringToDateTime.cs" />
@@ -43,12 +42,16 @@
     <Compile Include="Adapters\Dtos\VehicleFeatureRef.cs" />
     <Compile Include="Adapters\ITrafikkDatAdapter.cs" />
     <Compile Include="Adapters\Impl\TrafikkDatAdapter.cs" />
-    <Compile Include="Services\IListenForPositionChanges.cs" />
     <Compile Include="Services\ILocationRepository.cs" />
     <Compile Include="Services\IUpdateNotificationScreen.cs" />
     <Compile Include="Services\ILog.cs" />
     <Compile Include="Services\IUpdateTrafikkdata.cs" />
     <Compile Include="Services\Impl\DebugLogger.cs" />
+    <Compile Include="Services\Impl\DummyLocationRepository.cs" />
+    <Compile Include="Services\IMonitorGeoFences.cs" />
+    <Compile Include="Models\Region.cs" />
+    <Compile Include="Models\AlertRegion.cs" />
+    <Compile Include="Models\Line.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
