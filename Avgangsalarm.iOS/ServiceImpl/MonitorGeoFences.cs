@@ -23,8 +23,8 @@ namespace Avgangsalarm.iOS
 			_iPhoneLocationManager = clLocationManagerWrapper;
 			_iPhoneLocationManager.DesiredAccuracy = kilometer * 0.5f;
 
-			_iPhoneLocationManager.RegionEntered += LocationEntered;
-			_iPhoneLocationManager.RegionLeft += LocationLeft;
+			_iPhoneLocationManager.RegionEntered += OnRegionEntered;
+			_iPhoneLocationManager.RegionLeft += OnRegionLeft;
 
 			_log = LogManager.GetLogger (this.GetType());
 		}
@@ -34,14 +34,29 @@ namespace Avgangsalarm.iOS
 			return Regions.Select (i => i.Key);
 		}
 
-		public void LocationEntered(object sender, CLRegionEventArgs e)
+		protected void OnRegionEntered(object sender, CLRegionEventArgs e)
 		{
 			_log.Info ("MonitorGeoFences: Native event: Region entered");
+			var region = GetRegion (e);
+			RegionEntered (this, region);
 		}
 
-		public void LocationLeft(object sender, CLRegionEventArgs e)
+		protected void OnRegionLeft(object sender, CLRegionEventArgs e)
 		{
 			_log.Info ("MonitorGeoFences: Native event: Region left");
+			var region = GetRegion (e);
+			RegionLeft (this, region);
+		}
+
+		Region GetRegion (CLRegionEventArgs e)
+		{
+			var regionEntries = Regions.Where (i => i.Value == e.Region);
+
+			if (regionEntries.Any()) 
+			{
+				return regionEntries.First().Key;
+			}
+			return null;
 		}
 
 		#region IMonitorGeoFences implementation
