@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{09E17746-E5DF-4941-8B74-AFADFC073DDD}</ProjectGuid>
+    <ProjectGuid>{3617EE0C-9357-4493-9DD0-25E11F11C7BD}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Avgangsalarm.iOS</RootNamespace>
+    <RootNamespace>Avgangsalarm.Core.iOSTests</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>AvgangsalarmiOS</AssemblyName>
+    <AssemblyName>AvgangsalarmCoreiOSTests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -90,36 +90,22 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="MonoTouch.NUnitLite" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
-    <None Include="Entitlements.plist" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
-    <Compile Include="AppDelegate.cs" />
-    <Compile Include="FirstViewController.cs" />
-    <Compile Include="SecondViewController.cs" />
-    <Compile Include="FirstViewController.designer.cs">
-      <DependentUpon>FirstViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SecondViewController.designer.cs">
-      <DependentUpon>SecondViewController.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="MainStoryboard.storyboard" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\first.png" />
-    <BundleResource Include="Resources\first%402x.png" />
-    <BundleResource Include="Resources\second.png" />
-    <BundleResource Include="Resources\second%402x.png" />
+    <Compile Include="UnitTestAppDelegate.cs" />
+    <Compile Include="TrafikkDataTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Avgangsalarm.Core\Avgangsalarm.Core.csproj">
+    <ProjectReference Include="..\..\Avgangsalarm.Core\Avgangsalarm.Core.csproj">
       <Project>{2941C4B3-6418-424A-916B-305636C5FFF0}</Project>
       <Name>Avgangsalarm.Core</Name>
     </ProjectReference>

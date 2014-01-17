@@ -3,9 +3,8 @@ using System.Net.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Avgangsalarm.Core.iOS
+namespace Avgangsalarm.Core
 {
-	// TODO: Kan flyttes til core dersom vi velger å benytte Microsoft.Net.Http via NuGet
 	public class TrafikkDataService : ITrafikkDataService
 	{
 		#region ITrafikkDataService implementation
@@ -16,7 +15,8 @@ namespace Avgangsalarm.Core.iOS
 		{
 			var client = CreateClient(GetStoppUri);
 			var content = client.GetStringAsync(stopId.ToString()).Result;
-			var result = SimpleJson.DeserializeObject<IEnumerable<LineDeparture>>(content);
+			var result = SimpleJson.DeserializeObject<IEnumerable<LineDeparture>>(content);		
+
 			return Task.FromResult(result);
 		}
 

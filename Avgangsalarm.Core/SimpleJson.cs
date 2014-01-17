@@ -20,7 +20,10 @@
 // VERSION: 0.30.0
 
 // NOTE: uncomment the following line to make SimpleJson class internal.
-//#define SIMPLE_JSON_INTERNAL
+#define SIMPLE_JSON_INTERNAL
+
+
+#define SIMPLE_JSON_TYPEINFO
 
 // NOTE: uncomment the following line to make JsonArray and JsonObject class internal.
 //#define SIMPLE_JSON_OBJARRAYINTERNAL
@@ -63,12 +66,12 @@ using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
-using Avgangsalarm.Core.iOS.Reflection;
+using Avgangsalarm.Core.Reflection;
 
 // ReSharper disable LoopCanBeConvertedToQuery
 // ReSharper disable RedundantExplicitArrayCreation
 // ReSharper disable SuggestUseVarKeywordEvident
-namespace Avgangsalarm.Core.iOS
+namespace Avgangsalarm.Core
 {
     /// <summary>
     /// Represents the json array.
@@ -481,7 +484,7 @@ namespace Avgangsalarm.Core.iOS
     }
 }
 
-namespace Avgangsalarm.Core.iOS
+namespace Avgangsalarm.Core
 {
     /// <summary>
     /// This class encodes and decodes JSON strings.

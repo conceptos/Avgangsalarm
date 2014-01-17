@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4C0AE1D7-CB48-4C3C-A0AD-88DAB976CB1A}</ProjectGuid>
+    <ProjectGuid>{2091395A-4B3E-4CA6-B194-925EB0DB89CD}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>Avgangsalarm.iOS.Tests</RootNamespace>
@@ -94,7 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="IntegrationTests\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -102,16 +101,12 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="UnitTestAppDelegate.cs" />
-    <Compile Include="IntegrationTests\TrafikkDataTests.cs" />
+    <Compile Include="TrafikkServiceTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Avgangsalarm.Core.iOS\Avgangsalarm.Core.iOS.csproj">
-      <Project>{17F50F13-FBC7-44AD-9B0B-C0BC8B992147}</Project>
-      <Name>Avgangsalarm.Core.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Avgangsalarm.Core\Avgangsalarm.Core.csproj">
-      <Project>{936B1171-6101-45E0-A4CC-EA72DEC0460F}</Project>
+    <ProjectReference Include="..\..\Avgangsalarm.Core\Avgangsalarm.Core.csproj">
+      <Project>{2941C4B3-6418-424A-916B-305636C5FFF0}</Project>
       <Name>Avgangsalarm.Core</Name>
     </ProjectReference>
   </ItemGroup>

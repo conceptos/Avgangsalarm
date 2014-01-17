@@ -10,9 +10,7 @@ namespace Avgangsalarm.Core.Tests
 		public void CanGetDefaultLogger ()
 		{
 			var logger = LogManager.GetLogger (this.GetType());
-
 			Assert.IsNotNull (logger as ILog);
 		}
 	}
 }
-

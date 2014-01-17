@@ -5,10 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8FCE3267-913B-4B25-8E79-76257052CE39}</ProjectGuid>
+    <ProjectGuid>{BA4A5CDF-723A-4278-A299-FB4FC608874E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Avgangsalarm.Core.Tests</RootNamespace>
     <AssemblyName>Avgangsalarm.Core.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,7 +41,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Avgangsalarm.Core\Avgangsalarm.Core.csproj">
-      <Project>{936B1171-6101-45E0-A4CC-EA72DEC0460F}</Project>
+      <Project>{2941C4B3-6418-424A-916B-305636C5FFF0}</Project>
       <Name>Avgangsalarm.Core</Name>
     </ProjectReference>
   </ItemGroup>

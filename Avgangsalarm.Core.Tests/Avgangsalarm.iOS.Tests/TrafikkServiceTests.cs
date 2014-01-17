@@ -1,9 +1,9 @@
 using System;
 using NUnit.Framework;
-using Avgangsalarm.Core.iOS;
+using Avgangsalarm.Core;
 using System.Linq;
 
-namespace Avgangsalarm.iOS.Tests.IntegrationTests
+namespace Avgangsalarm.iOS.Tests
 {
 	[TestFixture]
 	public class TrafikkDataTests

@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{936B1171-6101-45E0-A4CC-EA72DEC0460F}</ProjectGuid>
+    <ProjectGuid>{2941C4B3-6418-424A-916B-305636C5FFF0}</ProjectGuid>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>Avgangsalarm.Core</RootNamespace>
     <AssemblyName>Avgangsalarm.Core</AssemblyName>
-    <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile49</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,25 +33,35 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Interfaces\IUpdateNotificationScreen.cs" />
-    <Compile Include="Interfaces\IListenForPositionChanges.cs" />
-    <Compile Include="Interfaces\ILog.cs" />
-    <Compile Include="Interfaces\IUpdateTrafikkdata.cs" />
     <Compile Include="Services\Dtos\AvgangDto.cs" />
     <Compile Include="Services\Dtos\FramedVehicleJourneyRef.cs" />
-    <Compile Include="Services\Dtos\VehicleFeatureRef.cs" />
     <Compile Include="Services\Dtos\TrainBlockPart.cs" />
+    <Compile Include="Services\Dtos\VehicleFeatureRef.cs" />
+    <Compile Include="Services\Impl\TrafikkDataService.cs" />
     <Compile Include="Services\ITrafikkDataService.cs" />
-    <Compile Include="Interfaces\ILocationRepository.cs" />
-    <Compile Include="Models\Location.cs" />
     <Compile Include="DebugLogger.cs" />
+    <Compile Include="Interfaces\IListenForPositionChanges.cs" />
+    <Compile Include="Interfaces\ILocationRepository.cs" />
+    <Compile Include="Interfaces\ILog.cs" />
+    <Compile Include="Interfaces\IUpdateNotificationScreen.cs" />
+    <Compile Include="Interfaces\IUpdateTrafikkdata.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="LogManager.cs" />
+    <Compile Include="SimpleJson.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
-    <Folder Include="Services\Dtos\" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\portable-net40+sl4+win8+wp71\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\portable-net40+sl4+win8+wp71\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\portable-net40+sl4+win8+wp71\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
