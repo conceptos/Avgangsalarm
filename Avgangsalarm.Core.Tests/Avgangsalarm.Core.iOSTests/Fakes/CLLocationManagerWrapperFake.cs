@@ -15,6 +15,8 @@ namespace Avgangsalarm.Core.iOSTests.Fakes
 
 		public event EventHandler<CLRegionEventArgs> RegionLeft;
 
+		public event EventHandler<CLLocationsUpdatedEventArgs> LocationsUpdated;
+
 		public double DesiredAccuracy { get; set; }	
 
 		#endregion

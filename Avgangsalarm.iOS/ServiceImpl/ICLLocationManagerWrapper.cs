@@ -13,6 +13,7 @@ namespace Avgangsalarm.iOS
 		void StopMonitoring (CLRegion clCircularRegion);
 		event EventHandler<CLRegionEventArgs> RegionEntered;
 		event EventHandler<CLRegionEventArgs> RegionLeft;
+		event EventHandler<CLLocationsUpdatedEventArgs> LocationsUpdated;
 		double DesiredAccuracy { get; set; }
 	}
 }

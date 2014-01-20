@@ -24,12 +24,17 @@ namespace Avgangsalarm.iOS
 			_clLocationManager.RegionLeft += (object sender, CLRegionEventArgs e) =>  {
 				this.RegionLeft (sender, e);
 			};
+
+			_clLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => { 
+				this.LocationsUpdated(sender, e);
+			};
 		}
 
 		#region ICLLocationManagerWrapper implementation
 
 		public event EventHandler<CLRegionEventArgs> RegionEntered = delegate {};
 		public event EventHandler<CLRegionEventArgs> RegionLeft = delegate {};
+		public event EventHandler<CLLocationsUpdatedEventArgs> LocationsUpdated = delegate {};
 
 		public double DesiredAccuracy 
 		{

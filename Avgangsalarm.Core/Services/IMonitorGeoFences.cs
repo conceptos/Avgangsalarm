@@ -11,6 +11,8 @@ namespace Avgangsalarm.Core.Services
 
 		event EventHandler<Region> RegionEntered;
 		event EventHandler<Region> RegionLeft;
+		event EventHandler<object> NativeLocationUpdatedEvent;
+
 	}
 }
 

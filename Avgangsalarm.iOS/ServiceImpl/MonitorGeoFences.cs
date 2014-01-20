@@ -26,6 +26,7 @@ namespace Avgangsalarm.iOS
 
 			_iPhoneLocationManager.RegionEntered += OnRegionEntered;
 			_iPhoneLocationManager.RegionLeft += OnRegionLeft;
+			_iPhoneLocationManager.LocationsUpdated += OnLocationUpdated;
 
 			_log = LogManager.GetLogger (this.GetType());
 		}
@@ -47,6 +48,11 @@ namespace Avgangsalarm.iOS
 			_log.Info ("MonitorGeoFences: Native event: Region left");
 			var region = GetRegion (e);
 			RegionLeft (this, region);
+		}
+
+		void OnLocationUpdated (object sender, CLLocationsUpdatedEventArgs e)
+		{
+			NativeLocationUpdatedEvent (this, e);
 		}
 
 		Region GetRegion (CLRegionEventArgs e)
@@ -86,6 +92,8 @@ namespace Avgangsalarm.iOS
 			var clCircularRegion = new CLCircularRegion (center, region.AlertZoneRadiusInMeters, identifier);
 			return clCircularRegion;
 		}
+
+		public event EventHandler<object> NativeLocationUpdatedEvent = delegate {};
 
 		public void RemoveRegion (Avgangsalarm.Core.Region region)
 		{

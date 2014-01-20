@@ -110,6 +110,10 @@
     <Compile Include="ServiceImpl\CLLocationManagerWrapper.cs" />
     <Compile Include="ServiceImpl\ICLLocationManagerWrapper.cs" />
     <Compile Include="ToBeSwitchedOutContainer.cs" />
+    <Compile Include="MapViewController.cs" />
+    <Compile Include="MapViewController.designer.cs">
+      <DependentUpon>MapViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
