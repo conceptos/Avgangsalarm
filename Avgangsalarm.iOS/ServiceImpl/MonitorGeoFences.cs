@@ -7,9 +7,10 @@ using System.Linq;
 
 namespace Avgangsalarm.iOS
 {
-	public class MonitorGeoFences : IMonitorGeoFences
+	public class MonitorGeoFences : IMonitorGeoFences, IDisposable
 	{
 		const int kilometer = 1000;
+		private int _lastLocationId = 0;
 
 		private readonly ILog _log;
 		private Dictionary<Region, CLCircularRegion> Regions = new Dictionary<Region, CLCircularRegion> ();
@@ -65,13 +66,15 @@ namespace Avgangsalarm.iOS
 
 		public event EventHandler<Region> RegionLeft = delegate {};
 
-		public void AddRegion (Region region, string identifier)
+		public void AddRegion (Region region)
 		{	
+			var identifier = "MonitorRegion_" + (++_lastLocationId);
 			_log.Info (string.Format ("MonitorGeoFences: Adding region {0}", identifier));
 
 			var clCircularRegion = CreateNativeRegion (region, identifier);
 
 			Regions.Add (region, clCircularRegion);
+			_iPhoneLocationManager.StartMonitoring (clCircularRegion);
 		}
 
 		static CLCircularRegion CreateNativeRegion (Region region, string identifier)
@@ -89,7 +92,18 @@ namespace Avgangsalarm.iOS
 			var value = Regions[region];
 			_log.Info (string.Format ("MonitorGeoFences: Adding region {0}", value.Identifier));
 
+			_iPhoneLocationManager.StopMonitoring (value);
 			Regions.Remove(region);
+		}
+
+		#endregion
+
+		#region IDisposable implementation
+
+		public void Dispose ()
+		{
+			_iPhoneLocationManager.RegionEntered -= OnRegionEntered;
+			_iPhoneLocationManager.RegionLeft -= OnRegionLeft;
 		}
 
 		#endregion

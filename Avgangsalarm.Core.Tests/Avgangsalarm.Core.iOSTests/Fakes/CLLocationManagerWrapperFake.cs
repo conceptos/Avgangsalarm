@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Avgangsalarm.iOS;
 using System.Linq;
 using MonoTouch.CoreLocation;
+using System.Collections.Generic;
 
 namespace Avgangsalarm.Core.iOSTests.Fakes
 {
@@ -15,6 +16,8 @@ namespace Avgangsalarm.Core.iOSTests.Fakes
 		public event EventHandler<CLRegionEventArgs> RegionLeft;
 
 		public double DesiredAccuracy { get; set; }	
+
+		#endregion
 
 		public void TriggerRegionEntered()
 		{
@@ -33,8 +36,19 @@ namespace Avgangsalarm.Core.iOSTests.Fakes
 			return new CLRegionEventArgs (region);
 		}
 
-		#endregion
+		public IEnumerable<string> MonitoredRegionsAdded = new List<string> ();
+		public void StartMonitoring (CLRegion clCircularRegion)
+		{
+			var list = (List<string>)MonitoredRegionsAdded;
+			list.Add (clCircularRegion.Identifier);
+		}
 
+		public IEnumerable<string> MonitoredRegionsRemoved = new List<string> ();
+		public void StopMonitoring (CLRegion clCircularRegion)
+		{
+			var list = (List<string>)MonitoredRegionsRemoved;
+			list.Add (clCircularRegion.Identifier);
+		}
 	}
 	
 }

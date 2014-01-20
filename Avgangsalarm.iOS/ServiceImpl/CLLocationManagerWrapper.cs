@@ -37,6 +37,15 @@ namespace Avgangsalarm.iOS
 			set { _clLocationManager.DesiredAccuracy = value; }
 		}
 
+		public void StartMonitoring (CLRegion clCircularRegion)
+		{
+			_clLocationManager.StartMonitoring (clCircularRegion);
+		}
+
+		public void StopMonitoring (CLRegion clCircularRegion)
+		{
+			_clLocationManager.StopMonitoring (clCircularRegion);
+		}
 		#endregion
 
 

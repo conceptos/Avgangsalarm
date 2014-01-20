@@ -5,7 +5,7 @@ namespace Avgangsalarm.Core.Services
 {
 	public interface IMonitorGeoFences
 	{
-		void AddRegion (Region region, string name);
+		void AddRegion (Region region);
 		void RemoveRegion (Region region);
 		IEnumerable<Region> GetRegions ();
 

@@ -9,6 +9,8 @@ namespace Avgangsalarm.iOS
 {
 	public interface ICLLocationManagerWrapper
 	{
+		void StartMonitoring (CLRegion clCircularRegion);
+		void StopMonitoring (CLRegion clCircularRegion);
 		event EventHandler<CLRegionEventArgs> RegionEntered;
 		event EventHandler<CLRegionEventArgs> RegionLeft;
 		double DesiredAccuracy { get; set; }
