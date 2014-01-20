@@ -2,15 +2,19 @@ using System;
 using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using Avgangsalarm.Core.Services;
 
 namespace Avgangsalarm.iOS
 {
 	public partial class FirstViewController : UIViewController
 	{
+		IMonitorGeoFences _monitorGeoFences = DummyContainer.MonitorGeoFences; 
+		ILocationRepository _repository = DummyContainer.LocationRepository;
+
 		public FirstViewController (IntPtr handle) : base (handle)
 		{
 			Title = NSBundle.MainBundle.LocalizedString ("First", "First");
-			TabBarItem.Image = UIImage.FromBundle ("first");
+			TabBarItem.Image = UIImage.FromBundle ("first");		
 		}
 
 		public override void DidReceiveMemoryWarning ()

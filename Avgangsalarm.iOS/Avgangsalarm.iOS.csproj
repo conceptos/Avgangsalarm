@@ -109,6 +109,7 @@
     <Compile Include="ServiceImpl\MonitorGeoFences.cs" />
     <Compile Include="ServiceImpl\CLLocationManagerWrapper.cs" />
     <Compile Include="ServiceImpl\ICLLocationManagerWrapper.cs" />
+    <Compile Include="ToBeSwitchedOutContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
