@@ -31,7 +31,7 @@ namespace Avgangsalarm.Core.iOSTests
 				_regionLeft = true;
 			};
 
-			_region = new Region (0, 1, 2);
+			_region = new Region (0, 1, 2, 3);
 		}
 
 		[Test]
@@ -39,6 +39,16 @@ namespace Avgangsalarm.Core.iOSTests
 		{
 			Assert.IsFalse (_sut.GetRegions ().Any ());
 			Assert.IsFalse (_fake.MonitoredRegionsAdded.Any());
+		}	
+
+		[Test]
+		public void CanAddMultipleRegions()
+		{
+			_sut.AddRegion (_region);
+			_sut.AddRegion (new Region(1, 2, 3, 4));
+
+			Assert.AreEqual ("MonitorRegion_1", _fake.MonitoredRegionsAdded.First());
+			Assert.AreEqual ("MonitorRegion_2", _fake.MonitoredRegionsAdded.Last());		
 		}	
 
 		[Test]
