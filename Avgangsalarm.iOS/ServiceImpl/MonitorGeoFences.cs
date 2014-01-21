@@ -14,15 +14,12 @@ namespace Avgangsalarm.iOS
 
 		private readonly ILog _log;
 		private Dictionary<Region, CLCircularRegion> Regions = new Dictionary<Region, CLCircularRegion> ();
-		ICLLocationManagerWrapper _iPhoneLocationManager;
-
-		public MonitorGeoFences() 
-			: this(new CLLocationManagerWrapper()) { }
+		ICLLocationManagerWrapper _iPhoneLocationManager;	
 
 		public MonitorGeoFences(ICLLocationManagerWrapper clLocationManagerWrapper)
 		{
 			_iPhoneLocationManager = clLocationManagerWrapper;
-			_iPhoneLocationManager.DesiredAccuracy = kilometer * 0.5f;
+			_iPhoneLocationManager.DesiredAccuracy = kilometer * 0.25f;
 
 			_iPhoneLocationManager.RegionEntered += OnRegionEntered;
 			_iPhoneLocationManager.RegionLeft += OnRegionLeft;

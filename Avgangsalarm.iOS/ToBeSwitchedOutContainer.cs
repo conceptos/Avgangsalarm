@@ -13,8 +13,8 @@ namespace Avgangsalarm.iOS
 			{
 				if (_monitorGeoFences == null) 
 				{
-					_monitorGeoFences = new MonitorGeoFences ();
-				}
+					_monitorGeoFences = new MonitorGeoFences (CLLocationManagerWrapper);
+					}
 
 				return _monitorGeoFences;
 			}
@@ -38,6 +38,22 @@ namespace Avgangsalarm.iOS
 			set 
 			{
 				_locationRepository = value;
+			}
+		}
+
+		static ICLLocationManagerWrapper _cLLocationManagerWrapper;
+		public static ICLLocationManagerWrapper CLLocationManagerWrapper {
+			get 
+			{	
+				if (_cLLocationManagerWrapper == null) 
+				{
+					_cLLocationManagerWrapper = new CLLocationManagerWrapper ();
+				}
+				return _cLLocationManagerWrapper;
+			}
+			set 
+			{
+				_cLLocationManagerWrapper = value;
 			}
 		}
 	}

@@ -51,6 +51,16 @@ namespace Avgangsalarm.iOS
 		{
 			_clLocationManager.StopMonitoring (clCircularRegion);
 		}
+
+		public void StartUpdatingLocation ()
+		{
+			_clLocationManager.StartUpdatingLocation ();
+		}
+
+		public void StopUpdatingLocation ()
+		{
+			_clLocationManager.StopUpdatingLocation ();
+		}
 		#endregion
 
 
