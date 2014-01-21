@@ -54,6 +54,7 @@
     <Compile Include="Models\AlertRegion.cs" />
     <Compile Include="Models\Line.cs" />
     <Compile Include="Models\UserLocation.cs" />
+    <Compile Include="Converters\UtmProjector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -64,6 +65,7 @@
     <Folder Include="Impl\" />
     <Folder Include="Adapters\" />
     <Folder Include="Services\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">
