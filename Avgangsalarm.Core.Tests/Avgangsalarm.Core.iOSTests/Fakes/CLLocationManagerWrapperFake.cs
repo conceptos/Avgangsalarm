@@ -51,6 +51,16 @@ namespace Avgangsalarm.Core.iOSTests.Fakes
 			var list = (List<string>)MonitoredRegionsRemoved;
 			list.Add (clCircularRegion.Identifier);
 		}
+
+		public void StartUpdatingLocation ()
+		{
+			throw new NotImplementedException();
+		}
+
+		public void StopUpdatingLocation ()
+		{
+			throw new NotImplementedException();
+		}
 	}
 	
 }
