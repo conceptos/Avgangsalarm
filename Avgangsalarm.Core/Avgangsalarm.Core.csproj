@@ -36,7 +36,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LogManager.cs" />
-    <Compile Include="SimpleJson.cs" />
     <Compile Include="Utils\JsonDateTimeStringToDateTime.cs" />
     <Compile Include="Adapters\Dtos\AvgangDto.cs" />
     <Compile Include="Adapters\Dtos\FramedVehicleJourneyRef.cs" />

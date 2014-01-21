@@ -28,6 +28,7 @@ namespace Avgangsalarm.iOS
 
 			// Perform any additional setup after loading the view, typically from a nib.
 			CreateMapView ();
+			ShowLocationsAsAnnotations ();
 		}
 
 		void CreateMapView ()
@@ -35,6 +36,52 @@ namespace Avgangsalarm.iOS
 			_mapView = new MKMapView (UIScreen.MainScreen.Bounds);
 			_mapView.ShowsUserLocation = true;
 			View.InsertSubview (_mapView, 0);
+		}
+
+		void ShowLocationsAsAnnotations ()
+		{
+			var locations = _repository.FetchAll ();
+
+			bool locationSet = false;
+
+			foreach (var l in locations) 
+			{
+				if (!locationSet) 
+				{
+					locationSet = true;
+					ZoomToFirstLocation (l);
+				}
+
+				var annotation = new MKPointAnnotation 
+				{
+					Title = l.Name,
+					Coordinate = new CLLocationCoordinate2D (l.Region.Latitude, l.Region.Longitude)
+				};
+
+				_mapView.AddAnnotation (annotation);
+			}
+		}
+
+		void ZoomToFirstLocation (Location l)
+		{
+			var coord = new CLLocationCoordinate2D {
+				Latitude = l.Region.Latitude,
+				Longitude = l.Region.Longitude
+			};
+
+			var span = new MKCoordinateSpan 
+			{
+				LatitudeDelta = 1,
+				LongitudeDelta = 1,
+			};
+
+			var region = new MKCoordinateRegion  
+			{
+				Center = coord,
+				Span = span,
+			};
+
+			_mapView.SetRegion (region, false);
 		}
 	}
 }

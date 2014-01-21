@@ -15,9 +15,10 @@ namespace Avgangsalarm.Core
 		{
 			var client = CreateClient(GetStoppUri);
 			var content = client.GetStringAsync(stopId.ToString()).Result;
-			var result = SimpleJson.DeserializeObject<IEnumerable<LineDeparture>>(content);		
+			//var result = SimpleJson.DeserializeObject<IEnumerable<LineDeparture>>(content);		
 
-			return Task.FromResult(result);
+			//return Task.FromResult(result);
+			throw new NotImplementedException ();
 		}
 
 		private static HttpClient CreateClient(string uri)

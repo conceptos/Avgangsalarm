@@ -16,7 +16,7 @@ namespace Avgangsalarm.Core
 				new Location(
 					"LokasjonId", 
 					"Min lokasjon (Carl Berner)", 
-					new Region(59.9400f, 66.44460f, 300),
+					new Region(59.9253f, 10.778f, 300),
 					new [] { new Line("31", "Tonsenhagen") })
 			};
 		}
