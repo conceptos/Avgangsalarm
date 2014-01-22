@@ -38,7 +38,8 @@ namespace Avgangsalarm.iOS.Delegates
 			mapView.SetRegion (region, true);
 		}
 
-		[Obsolete ("Since iOS 7 it is recommnended that you use GetRendererForOverlay")] // TODO: Finn ut av denne
+		[Obsolete ("Since iOS 7 it is recommnended that you use GetRendererForOverlay")] 
+		// TODO: Finn ut av denne
 		public override MKOverlayView GetViewForOverlay (MKMapView mapView, NSObject overlay)
 		{
 			var circleOverlay = overlay as MKCircle;

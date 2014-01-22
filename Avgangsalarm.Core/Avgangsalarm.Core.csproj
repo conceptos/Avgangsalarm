@@ -55,6 +55,7 @@
     <Compile Include="Models\Line.cs" />
     <Compile Include="Models\UserLocation.cs" />
     <Compile Include="Converters\UtmProjector.cs" />
+    <Compile Include="Services\ITrafikkdataDeserializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

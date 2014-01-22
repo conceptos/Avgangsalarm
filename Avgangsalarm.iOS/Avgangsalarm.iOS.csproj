@@ -90,6 +90,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="System.Json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -111,6 +112,7 @@
       <DependentUpon>OverviewViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Delegates\MapViewDelegate.cs" />
+    <Compile Include="ServiceImpl\TrafikkDataDeserializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />

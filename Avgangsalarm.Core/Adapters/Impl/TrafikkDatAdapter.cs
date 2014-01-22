@@ -2,11 +2,19 @@ using System;
 using System.Net.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Avgangsalarm.Core.Services;
 
 namespace Avgangsalarm.Core
 {
 	public class TrafikkDatAdapter : ITrafikkDatAdapter
 	{
+		ITrafikkdataDeserializer _serializer;
+
+		public TrafikkDatAdapter(ITrafikkdataDeserializer serializer)
+		{
+			_serializer = serializer;
+		}
+
 		#region ITrafikkDataService implementation
 
 		private const string GetStoppUri = "http://reis.trafikanten.no/reisrest/realtime/getalldepartures/";
@@ -15,10 +23,10 @@ namespace Avgangsalarm.Core
 		{
 			var client = CreateClient(GetStoppUri);
 			var content = client.GetStringAsync(stopId.ToString()).Result;
-			//var result = SimpleJson.DeserializeObject<IEnumerable<LineDeparture>>(content);		
 
-			//return Task.FromResult(result);
-			throw new NotImplementedException ("SimpleJson ville ikke kompileres til iOS");
+			var result = _serializer.DeserializeLineDepartures (content);
+
+			return Task.FromResult(result);		
 		}
 
 		private static HttpClient CreateClient(string uri)

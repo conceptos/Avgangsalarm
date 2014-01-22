@@ -1,6 +1,7 @@
 using System;
 using NUnit.Framework;
 using System.Linq;
+using Avgangsalarm.iOS.ServiceImpl;
 
 namespace Avgangsalarm.Core.iOSTests
 {
@@ -13,7 +14,7 @@ namespace Avgangsalarm.Core.iOSTests
 		[SetUp]
 		public void Setup()
 		{
-			_sut = new TrafikkDatAdapter ();
+			_sut = new TrafikkDatAdapter (new TrafikkDataDeserializer());
 		}
 
 		[Test]
