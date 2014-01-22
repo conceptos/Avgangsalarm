@@ -18,7 +18,7 @@ namespace Avgangsalarm.Core
 			//var result = SimpleJson.DeserializeObject<IEnumerable<LineDeparture>>(content);		
 
 			//return Task.FromResult(result);
-			throw new NotImplementedException ();
+			throw new NotImplementedException ("SimpleJson ville ikke kompileres til iOS");
 		}
 
 		private static HttpClient CreateClient(string uri)

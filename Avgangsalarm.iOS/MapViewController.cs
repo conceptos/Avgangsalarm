@@ -7,6 +7,7 @@ using MonoTouch.MapKit;
 using MonoTouch.CoreLocation;
 using Avgangsalarm.Core;
 using System.Text;
+using Avgangsalarm.iOS.Delegates;
 
 namespace Avgangsalarm.iOS
 {
@@ -35,23 +36,16 @@ namespace Avgangsalarm.iOS
 		{
 			_mapView = new MKMapView (UIScreen.MainScreen.Bounds);
 			_mapView.ShowsUserLocation = true;
+			_mapView.Delegate = new MapViewDelegate ();
 			View.InsertSubview (_mapView, 0);
 		}
 
 		void ShowLocationsAsAnnotations ()
 		{
 			var locations = _repository.FetchAll ();
-
-			bool locationSet = false;
-
+					
 			foreach (var l in locations) 
 			{
-				if (!locationSet) 
-				{
-					locationSet = true;
-					ZoomToFirstLocation (l);
-				}
-
 				var annotation = new MKPointAnnotation 
 				{
 					Title = l.Name,
@@ -59,29 +53,10 @@ namespace Avgangsalarm.iOS
 				};
 
 				_mapView.AddAnnotation (annotation);
+
+				var circleOverlay = MKCircle.Circle (annotation.Coordinate, l.Region.AlertZoneRadiusInMeters);
+				_mapView.AddOverlay (circleOverlay);
 			}
-		}
-
-		void ZoomToFirstLocation (Location l)
-		{
-			var coord = new CLLocationCoordinate2D {
-				Latitude = l.Region.Latitude,
-				Longitude = l.Region.Longitude
-			};
-
-			var span = new MKCoordinateSpan 
-			{
-				LatitudeDelta = 1,
-				LongitudeDelta = 1,
-			};
-
-			var region = new MKCoordinateRegion  
-			{
-				Center = coord,
-				Span = span,
-			};
-
-			_mapView.SetRegion (region, false);
 		}
 	}
 }

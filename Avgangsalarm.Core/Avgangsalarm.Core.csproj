@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />
-    <Folder Include="Impl\" />
     <Folder Include="Adapters\" />
     <Folder Include="Services\" />
     <Folder Include="Converters\" />

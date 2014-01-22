@@ -110,6 +110,7 @@
     <Compile Include="OverviewViewController.designer.cs">
       <DependentUpon>OverviewViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Delegates\MapViewDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -130,5 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ServiceImpl\" />
+    <Folder Include="Delegates\" />
   </ItemGroup>
 </Project>
