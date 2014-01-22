@@ -6,11 +6,11 @@ using Avgangsalarm.Core.Services;
 
 namespace Avgangsalarm.Core
 {
-	public class TrafikkDatAdapter : ITrafikkDatAdapter
+	public class TrafikkDataAdapter : ITrafikkDataAdapter
 	{
 		ITrafikkdataDeserializer _serializer;
 
-		public TrafikkDatAdapter(ITrafikkdataDeserializer serializer)
+		public TrafikkDataAdapter(ITrafikkdataDeserializer serializer)
 		{
 			_serializer = serializer;
 		}

@@ -41,8 +41,6 @@
     <Compile Include="Adapters\Dtos\FramedVehicleJourneyRef.cs" />
     <Compile Include="Adapters\Dtos\TrainBlockPart.cs" />
     <Compile Include="Adapters\Dtos\VehicleFeatureRef.cs" />
-    <Compile Include="Adapters\ITrafikkDatAdapter.cs" />
-    <Compile Include="Adapters\Impl\TrafikkDatAdapter.cs" />
     <Compile Include="Services\ILocationRepository.cs" />
     <Compile Include="Services\IUpdateNotificationScreen.cs" />
     <Compile Include="Services\ILog.cs" />
@@ -54,8 +52,12 @@
     <Compile Include="Models\AlertRegion.cs" />
     <Compile Include="Models\Line.cs" />
     <Compile Include="Models\UserLocation.cs" />
-    <Compile Include="Converters\UtmProjector.cs" />
     <Compile Include="Services\ITrafikkdataDeserializer.cs" />
+    <Compile Include="Utils\UtmProjector.cs" />
+    <Compile Include="Models\Departure.cs" />
+    <Compile Include="Adapters\Impl\TrafikkDataAdapter.cs" />
+    <Compile Include="Adapters\ITrafikkDataAdapter.cs" />
+    <Compile Include="Services\Impl\UpdateTrafikkData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

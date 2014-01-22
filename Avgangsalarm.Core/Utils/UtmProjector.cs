@@ -1,6 +1,6 @@
 using System;
 
-namespace Avgangsalarm.Core.Converters
+namespace Avgangsalarm.Core.Utils
 {
 	public static class UtmProjector
 	{

@@ -8,13 +8,13 @@ namespace Avgangsalarm.Core.iOSTests
 	[TestFixture]
 	public class TrafikkDataAdapterTest
 	{
-		TrafikkDatAdapter _sut;
+		TrafikkDataAdapter _sut;
 		private const int CarlBernersPlassStopId = 3011400;
 
 		[SetUp]
 		public void Setup()
 		{
-			_sut = new TrafikkDatAdapter (new TrafikkDataDeserializer());
+			_sut = new TrafikkDataAdapter (new TrafikkDataDeserializer());
 		}
 
 		[Test]

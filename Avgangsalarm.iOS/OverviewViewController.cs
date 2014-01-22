@@ -19,7 +19,7 @@ namespace Avgangsalarm.iOS
 		public OverviewViewController (IntPtr handle) : base (handle)
 		{
 			Title = NSBundle.MainBundle.LocalizedString ("First", "First");
-			TabBarItem.Image = UIImage.FromBundle ("first");		
+			TabBarItem.Image = UIImage.FromBundle ("first");
 		}
 
 		public override void DidReceiveMemoryWarning ()
