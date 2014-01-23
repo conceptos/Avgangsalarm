@@ -7,6 +7,8 @@ using System.Linq;
 
 namespace Avgangsalarm.iOS
 {
+	// http://docs.xamarin.com/guides/cross-platform/application_fundamentals/backgrounding/part_3_ios_backgrounding_techniques/updating_an_application_in_the_background/
+	// http://docs.xamarin.com/guides/cross-platform/application_fundamentals/backgrounding/part_3_ios_backgrounding_techniques/registering_applications_to_run_in_background/
 	public class MonitorGeoFences : IMonitorGeoFences, IDisposable
 	{
 		const int kilometer = 1000;

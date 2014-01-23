@@ -8,12 +8,12 @@ using MonoTouch.CoreLocation;
 using Avgangsalarm.Core;
 using System.Text;
 using Avgangsalarm.iOS.Delegates;
+using System.Collections.Generic;
 
 namespace Avgangsalarm.iOS
 {
 	public partial class MapViewController : UIViewController
 	{
-		IMonitorGeoFences _monitorGeoFences = DummyContainer.MonitorGeoFences; 
 		ILocationRepository _repository = DummyContainer.LocationRepository;
 		ILog _logger = LogManager.GetLogger(typeof(MapViewController));
 		MKMapView _mapView; 
@@ -29,7 +29,7 @@ namespace Avgangsalarm.iOS
 
 			// Perform any additional setup after loading the view, typically from a nib.
 			CreateMapView ();
-			ShowLocationsAsAnnotations ();
+			ShowLocationsInMap ();
 		}
 
 		void CreateMapView ()
@@ -40,12 +40,17 @@ namespace Avgangsalarm.iOS
 			View.InsertSubview (_mapView, 0);
 		}
 
-		void ShowLocationsAsAnnotations ()
+		// Dictionary<Location, IMKAnnotation> _annotationsMap = new Dictionary<Location, IMKAnnotation> ();
+		// Dictionary<Location, IMKOverlay> _overlaysMap = Dictionary<Location, IMKOverlay> ();
+
+		void ShowLocationsInMap ()
 		{
 			var locations = _repository.FetchAll ();
-					
+				
 			foreach (var l in locations) 
 			{
+				_logger.Info (string.Format ("MapViewController: Adding visuals for '{0}'", l.Name));
+
 				var annotation = new MKPointAnnotation 
 				{
 					Title = l.Name,
@@ -53,9 +58,11 @@ namespace Avgangsalarm.iOS
 				};
 
 				_mapView.AddAnnotation (annotation);
+				// _annotationsMap.Add (l, annotation);
 
 				var circleOverlay = MKCircle.Circle (annotation.Coordinate, l.Region.AlertZoneRadiusInMeters);
 				_mapView.AddOverlay (circleOverlay);
+				// _overlaysMap.Add (l, circleOverlay);
 			}
 		}
 	}

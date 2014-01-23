@@ -11,10 +11,8 @@ namespace Avgangsalarm.iOS
 {
 	public partial class OverviewViewController : UIViewController
 	{
-		IMonitorGeoFences _monitorGeoFences = DummyContainer.MonitorGeoFences; 
-		ILocationRepository _repository = DummyContainer.LocationRepository;
-
-		ILog _logger = LogManager.GetLogger ( typeof(OverviewViewController));
+		private readonly ILog _logger = LogManager.GetLogger ( typeof(OverviewViewController));
+		private readonly IUpdateEngine _update = DummyContainer.UpdateEngine;
 
 		public OverviewViewController (IntPtr handle) : base (handle)
 		{

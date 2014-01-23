@@ -102,7 +102,6 @@
     <Compile Include="ServiceImpl\MonitorGeoFences.cs" />
     <Compile Include="ServiceImpl\CLLocationManagerWrapper.cs" />
     <Compile Include="ServiceImpl\ICLLocationManagerWrapper.cs" />
-    <Compile Include="ToBeSwitchedOutContainer.cs" />
     <Compile Include="MapViewController.cs" />
     <Compile Include="MapViewController.designer.cs">
       <DependentUpon>MapViewController.cs</DependentUpon>
@@ -113,6 +112,8 @@
     </Compile>
     <Compile Include="Delegates\MapViewDelegate.cs" />
     <Compile Include="ServiceImpl\TrafikkDataDeserializer.cs" />
+    <Compile Include="ServiceImpl\UpdateNotificationScreen.cs" />
+    <Compile Include="DummyContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
