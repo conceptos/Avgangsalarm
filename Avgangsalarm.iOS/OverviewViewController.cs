@@ -6,13 +6,14 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using Avgangsalarm.Core.Services;
 using Avgangsalarm.Core;
+using TinyIoC;
 
 namespace Avgangsalarm.iOS
 {
 	public partial class OverviewViewController : UIViewController
 	{
 		private readonly ILog _logger = LogManager.GetLogger ( typeof(OverviewViewController));
-		private readonly IUpdateEngine _update = DummyContainer.UpdateEngine;
+		private readonly IUpdateEngine _update = TinyIoCContainer.Current.Resolve<IUpdateEngine>();
 
 		public OverviewViewController (IntPtr handle) : base (handle)
 		{

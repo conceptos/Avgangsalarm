@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using TinyIoC;
+using Avgangsalarm.Core.Services;
+using Avgangsalarm.Core;
+using Avgangsalarm.Core.Services.Impl;
+using Avgangsalarm.iOS.ServiceImpl;
 
 namespace Avgangsalarm.iOS
 {
@@ -17,6 +22,21 @@ namespace Avgangsalarm.iOS
 			get;
 			set;
 		}
+
+		public override void FinishedLaunching (UIApplication application)
+		{
+			// NOTE: Don't call the base implementation on a Model class
+			// see http://docs.xamarin.com/guides/ios/application_fundamentals/delegates,_protocols,_and_events
+
+			TinyIoCContainer.Current.Register (typeof(ILocationRepository), typeof(DummyLocationRepository)).AsSingleton ();
+			TinyIoCContainer.Current.Register (typeof(IUpdateEngine), typeof(UpdateEngine)).AsSingleton ();
+			TinyIoCContainer.Current.Register (typeof(IUpdateTrafikkdata), typeof(UpdateTrafikkData)).AsSingleton ();
+			TinyIoCContainer.Current.Register (typeof(IMonitorGeoFences), typeof(MonitorGeoFences)).AsSingleton ();
+			TinyIoCContainer.Current.Register (typeof(ITrafikkDataAdapter), typeof(TrafikkDataAdapter));
+			TinyIoCContainer.Current.Register (typeof(ITrafikkdataDeserializer), typeof(TrafikkDataDeserializer)).AsSingleton ();
+			TinyIoCContainer.Current.Register (typeof(ICLLocationManagerWrapper), typeof(CLLocationManagerWrapper)).AsSingleton ();
+		}
+
 		// This method is invoked when the application is about to move from active to inactive state.
 		// OpenGL applications should use this method to pause.
 		public override void OnResignActivation (UIApplication application)

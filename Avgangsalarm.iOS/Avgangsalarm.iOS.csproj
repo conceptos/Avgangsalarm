@@ -95,6 +95,7 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -113,7 +114,7 @@
     <Compile Include="Delegates\MapViewDelegate.cs" />
     <Compile Include="ServiceImpl\TrafikkDataDeserializer.cs" />
     <Compile Include="ServiceImpl\UpdateNotificationScreen.cs" />
-    <Compile Include="DummyContainer.cs" />
+    <Compile Include="TinyIoC.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />

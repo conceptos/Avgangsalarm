@@ -9,18 +9,19 @@ using Avgangsalarm.Core;
 using System.Text;
 using Avgangsalarm.iOS.Delegates;
 using System.Collections.Generic;
+using TinyIoC;
 
 namespace Avgangsalarm.iOS
 {
 	public partial class MapViewController : UIViewController
 	{
-		ILocationRepository _repository = DummyContainer.LocationRepository;
+		ILocationRepository _repository;
 		ILog _logger = LogManager.GetLogger(typeof(MapViewController));
 		MKMapView _mapView; 
 
 		public MapViewController (IntPtr handle) : base (handle)
 		{
-
+			_repository = TinyIoCContainer.Current.Resolve<ILocationRepository> ();
 		}
 
 		public override void ViewDidLoad ()
