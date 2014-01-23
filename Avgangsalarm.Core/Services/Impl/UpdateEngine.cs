@@ -1,9 +1,9 @@
 using System;
 using Avgangsalarm.Core.Services;
 
-namespace Avgangsalarm.Core
+namespace Avgangsalarm.Core.Services.Impl
 {
-	public class UpdateEngine : IUpdateEngine
+	public class UpdateEngine : IUpdateEngine, IDisposable
 	{
 		private readonly ILocationRepository _locationRepository;
 		private readonly IMonitorGeoFences _monitorGeoFences;
@@ -20,6 +20,9 @@ namespace Avgangsalarm.Core
 			_updateTrafikkData = updateTrafikkData;
 			_monitorGeoFences = monitorGeoFences;
 			_locationRepository = locationRepository;
+
+			monitorGeoFences.RegionEntered += OnRegionEntered;
+			monitorGeoFences.RegionLeft += OnRegionLeft;
 		}
 
 		public void Start()
@@ -46,9 +49,29 @@ namespace Avgangsalarm.Core
 			var locations = _locationRepository.FetchAll ();
 			foreach(var location in locations)
 			{
-				_monitorGeoFences.AddRegion (location.Region);
+				_monitorGeoFences.RemoveRegion (location.Region);
 			}
 		}
+
+		public void OnRegionEntered(object sender, Region e)
+		{
+
+		}
+
+		public void OnRegionLeft(object sender, Region e)
+		{
+
+		}
+
+		#region IDisposable implementation
+
+		public void Dispose ()
+		{
+			_monitorGeoFences.RegionEntered += OnRegionEntered;
+			_monitorGeoFences.RegionLeft += OnRegionLeft;
+		}
+
+		#endregion
 	}
 }
 

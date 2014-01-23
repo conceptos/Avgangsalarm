@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="LogManagerTest.cs" />
     <Compile Include="UpdateTrafikkDataTest.cs" />
+    <Compile Include="UpdateEngineTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

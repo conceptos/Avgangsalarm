@@ -58,8 +58,8 @@
     <Compile Include="Adapters\Impl\TrafikkDataAdapter.cs" />
     <Compile Include="Adapters\ITrafikkDataAdapter.cs" />
     <Compile Include="Services\Impl\UpdateTrafikkData.cs" />
-    <Compile Include="UpdateEngine.cs" />
-    <Compile Include="IUpdateEngine.cs" />
+    <Compile Include="Services\IUpdateEngine.cs" />
+    <Compile Include="Services\Impl\UpdateEngine.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
