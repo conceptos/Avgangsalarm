@@ -1,5 +1,6 @@
 using System;
 using Avgangsalarm.Core.Services;
+using System.Collections.Generic;
 
 namespace Avgangsalarm.Core.Services.Impl
 {
@@ -31,11 +32,7 @@ namespace Avgangsalarm.Core.Services.Impl
 
 			_logger.Info ("UpdateEngine: Starting engine...");
 
-			var locations = _locationRepository.FetchAll ();
-			foreach(var location in locations)
-			{
-				_monitorGeoFences.AddRegion (location.Region);
-			}
+			AddAllLocationsToMonitor ();
 		}
 
 		public void Stop()
@@ -46,21 +43,35 @@ namespace Avgangsalarm.Core.Services.Impl
 				_isStarted = false;
 			}
 
-			var locations = _locationRepository.FetchAll ();
-			foreach(var location in locations)
-			{
-				_monitorGeoFences.RemoveRegion (location.Region);
-			}
+			RemoveAllLocationsFromMonitor ();
 		}
 
 		public void OnRegionEntered(object sender, Region e)
 		{
-
+			// TODO
 		}
 
 		public void OnRegionLeft(object sender, Region e)
 		{
+			// TODO
+		}
 
+		void AddAllLocationsToMonitor ()
+		{
+			var locations = _locationRepository.FetchAll ();
+			foreach (var location in locations) 
+			{
+				_monitorGeoFences.AddRegion (location.Region);
+			}
+		}
+
+		void RemoveAllLocationsFromMonitor ()
+		{
+			var locations = _locationRepository.FetchAll ();
+			foreach (var location in locations) 
+			{
+				_monitorGeoFences.RemoveRegion (location.Region);
+			}
 		}
 
 		#region IDisposable implementation

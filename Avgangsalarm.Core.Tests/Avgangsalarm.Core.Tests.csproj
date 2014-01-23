@@ -39,6 +39,10 @@
     <Compile Include="LogManagerTest.cs" />
     <Compile Include="UpdateTrafikkDataTest.cs" />
     <Compile Include="UpdateEngineTests.cs" />
+    <Compile Include="Fakes\LocationRepositoryFake.cs" />
+    <Compile Include="Fakes\MonitorGeoFencesFake.cs" />
+    <Compile Include="Fakes\FakeTrafikkDataAdapter.cs" />
+    <Compile Include="Fakes\UpdateTrafikkDataFake.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -46,5 +50,8 @@
       <Project>{2941C4B3-6418-424A-916B-305636C5FFF0}</Project>
       <Name>Avgangsalarm.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fakes\" />
   </ItemGroup>
 </Project>
