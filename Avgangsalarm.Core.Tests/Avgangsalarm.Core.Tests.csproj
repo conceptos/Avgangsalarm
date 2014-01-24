@@ -38,12 +38,13 @@
   <ItemGroup>
     <Compile Include="Fakes\LocationRepositoryFake.cs" />
     <Compile Include="Fakes\MonitorGeoFencesFake.cs" />
-    <Compile Include="Fakes\FakeTrafikkDataAdapter.cs" />
-    <Compile Include="Fakes\UpdateTrafikkDataFake.cs" />
     <Compile Include="ServiceTests\UpdateEngineTests.cs" />
     <Compile Include="ServiceTests\LogManagerTest.cs" />
     <Compile Include="ServiceTests\UpdateTrafikkDataTest.cs" />
     <Compile Include="ModelTests\LineTests.cs" />
+    <Compile Include="Fakes\GetTrafikkDataFake.cs" />
+    <Compile Include="Fakes\TrafikkDataAdapteFake.cs" />
+    <Compile Include="Fakes\PublishUpdatesFake.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

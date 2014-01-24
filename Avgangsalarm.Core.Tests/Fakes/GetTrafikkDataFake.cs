@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Avgangsalarm.Core.Tests
 {
-	public class UpdateTrafikkDataFake : IUpdateTrafikkdata
+	public class GetTrafikkDataFake : IUpdateTrafikkdata
 	{
 		private List<int> _stopIds = new List<int> ();
 

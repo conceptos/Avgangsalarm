@@ -41,9 +41,7 @@
     <Compile Include="Adapters\Dtos\TrainBlockPart.cs" />
     <Compile Include="Adapters\Dtos\VehicleFeatureRef.cs" />
     <Compile Include="Services\ILocationRepository.cs" />
-    <Compile Include="Services\IUpdateNotificationScreen.cs" />
     <Compile Include="Services\ILog.cs" />
-    <Compile Include="Services\IUpdateTrafikkdata.cs" />
     <Compile Include="Services\Impl\DebugLogger.cs" />
     <Compile Include="Services\Impl\DummyLocationRepository.cs" />
     <Compile Include="Services\IMonitorGeoFences.cs" />
@@ -55,11 +53,13 @@
     <Compile Include="Models\Departure.cs" />
     <Compile Include="Adapters\Impl\TrafikkDataAdapter.cs" />
     <Compile Include="Adapters\ITrafikkDataAdapter.cs" />
-    <Compile Include="Services\Impl\UpdateTrafikkData.cs" />
     <Compile Include="Services\IUpdateEngine.cs" />
     <Compile Include="Services\Impl\UpdateEngine.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Services\IPublishUpdates.cs" />
+    <Compile Include="Services\IGetTrafikkdata.cs" />
+    <Compile Include="Services\Impl\GetTrafikkData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

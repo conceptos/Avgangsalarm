@@ -1,6 +1,7 @@
 using System;
 using Avgangsalarm.Core.Services;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Avgangsalarm.Core.Services.Impl
 {
@@ -9,6 +10,7 @@ namespace Avgangsalarm.Core.Services.Impl
 		private readonly ILocationRepository _locationRepository;
 		private readonly IMonitorGeoFences _monitorGeoFences;
 		private readonly IUpdateTrafikkdata _updateTrafikkData;
+		private readonly IEnumerable<IPublishUpdates> _notifiers;
 
 		private readonly ILog _logger = LogManager.GetLogger(typeof(UpdateEngine));
 		private bool _isStarted = false;
@@ -16,11 +18,13 @@ namespace Avgangsalarm.Core.Services.Impl
 		public UpdateEngine (
 			ILocationRepository locationRepository, 
 			IMonitorGeoFences monitorGeoFences, 
-			IUpdateTrafikkdata updateTrafikkData)
+			IUpdateTrafikkdata updateTrafikkData,
+			IEnumerable<IPublishUpdates> notifiers)
 		{
 			_updateTrafikkData = updateTrafikkData;
 			_monitorGeoFences = monitorGeoFences;
 			_locationRepository = locationRepository;
+			_notifiers = notifiers;
 
 			monitorGeoFences.RegionEntered += OnRegionEntered;
 			monitorGeoFences.RegionLeft += OnRegionLeft;
@@ -46,17 +50,37 @@ namespace Avgangsalarm.Core.Services.Impl
 			RemoveAllLocationsFromMonitor ();
 		}
 
-		public void OnRegionEntered(object sender, Region e)
+		protected async void OnRegionEntered(object sender, Region e)
 		{
-			_updateTrafikkData.GetDeparturesForStop (e.StopId);
+			_logger.Info ("UpdateEngine: Region entered, fetching departures....");
+			var departures = await _updateTrafikkData.GetDeparturesForStop (e.StopId);
+
+			NotifyOfRelevantDepartures (e, departures);
 		}
 
-		public void OnRegionLeft(object sender, Region e)
+		void NotifyOfRelevantDepartures (Region e, IEnumerable<Avgangsalarm.Core.Models.Departure> departures)
+		{
+			var locations = _locationRepository.FetchAll ().Where (i => i.Region == e);
+			var relevantLines = locations.SelectMany (i => i.LinesToCheck).Distinct ();
+			var relevantDepartures = departures.Where (i => relevantLines.Contains (i.Line));
+
+			_logger.Info ("UpdateEngine: {0} relevant updates received", relevantDepartures.Count ());
+
+			if (_notifiers != null) 
+			{
+				foreach (var notifyer in _notifiers) 
+				{
+					notifyer.NotifyUpdatedDepartures (relevantDepartures);
+				}			
+			}
+		}
+
+		protected void OnRegionLeft(object sender, Region e)
 		{
 			// TODO
 		}
 
-		void AddAllLocationsToMonitor ()
+		private void AddAllLocationsToMonitor ()
 		{
 			var locations = _locationRepository.FetchAll ();
 			foreach (var location in locations) 
@@ -65,7 +89,7 @@ namespace Avgangsalarm.Core.Services.Impl
 			}
 		}
 
-		void RemoveAllLocationsFromMonitor ()
+		private void RemoveAllLocationsFromMonitor ()
 		{
 			var locations = _locationRepository.FetchAll ();
 			foreach (var location in locations) 

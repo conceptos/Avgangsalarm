@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Avgangsalarm.Core.Services.Impl
 {
-	public class UpdateTrafikkData : IUpdateTrafikkdata
+	public class GetTrafikkData : IUpdateTrafikkdata
 	{
 		ITrafikkDataAdapter _trafikkDataAdapter;
-		public UpdateTrafikkData (ITrafikkDataAdapter trafikkDataAdapter)
+		public GetTrafikkData (ITrafikkDataAdapter trafikkDataAdapter)
 		{
 			_trafikkDataAdapter = trafikkDataAdapter;
 		}
@@ -23,7 +23,7 @@ namespace Avgangsalarm.Core.Services.Impl
 			var lineDepartures = await _trafikkDataAdapter.GetLineDeparturesForStopId (stopId);
 			foreach (LineDeparture ld in lineDepartures) 
 			{
-				var line = new Line (ld.LineRef, ld.PublishedLineName);
+				var line = new Line (ld.LineRef, ld.DestinationName);
 				var departure = new Departure(line, ld.ExpectedDepartureTime.ConvertToDate());
 				departures.Add (departure);
 			}

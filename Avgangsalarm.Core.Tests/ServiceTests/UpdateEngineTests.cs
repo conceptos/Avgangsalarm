@@ -11,20 +11,22 @@ namespace Avgangsalarm.Core.Tests.ServiceTests
 	public class UpdateEngineTests
 	{
 		private UpdateEngine _sut;
-		private UpdateTrafikkDataFake _updateTrafikkDataFake;
 
 		private Region _region;
 
+		private GetTrafikkDataFake _updateTrafikkDataFake;
 		private MonitorGeoFencesFake _monitorGeoFencesFake;
+		private PublishUpdatesFake[] _publishUpdatesFakeList;
 
 		[SetUp]
 		public void Setup()
 		{
 			var repositoryFake = new LocationRepositoryFake ();
 			_monitorGeoFencesFake = new MonitorGeoFencesFake ();
-			_updateTrafikkDataFake = new UpdateTrafikkDataFake ();
+			_updateTrafikkDataFake = new GetTrafikkDataFake ();
+			_publishUpdatesFakeList = new [] { new PublishUpdatesFake () };
 
-			_sut = 	new UpdateEngine (repositoryFake, _monitorGeoFencesFake, _updateTrafikkDataFake);
+			_sut = 	new UpdateEngine (repositoryFake, _monitorGeoFencesFake, _updateTrafikkDataFake, _publishUpdatesFakeList);
 
 			_region = new Region (123, 1, 2, 3);
 			var locations = new List<Location> 
@@ -36,7 +38,7 @@ namespace Avgangsalarm.Core.Tests.ServiceTests
 		}
 
 		[Test]
-		public void MustNotAddRegionsByDefault ()
+		public void MustNotAddRegionsBeforeStart ()
 		{
 			var isAdded = _monitorGeoFencesFake.AddedRegions.Contains (_region);
 			var isRemoved = _monitorGeoFencesFake.RemovedRegions.Contains (_region);
@@ -75,6 +77,14 @@ namespace Avgangsalarm.Core.Tests.ServiceTests
 		{
 			_monitorGeoFencesFake.TriggerEnterered (_region);
 			Assert.IsTrue (_updateTrafikkDataFake.GetDeparturesForStopWasCalledForRegion(_region.StopId));
+		}
+
+		[Test]
+		public void MustPublishReceivedUpdates()
+		{
+			_monitorGeoFencesFake.TriggerEnterered (_region);
+			var hasPublishedDepartures = _publishUpdatesFakeList.Single ().UpdatedDepartures.Any ();
+			Assert.IsTrue (hasPublishedDepartures);
 		}
 	}
 }

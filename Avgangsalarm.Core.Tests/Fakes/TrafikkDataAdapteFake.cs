@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Avgangsalarm.Core.Tests
 {
 
-	public class FakeTrafikkDataAdapter : ITrafikkDataAdapter
+	public class TrafikkDataAdapterFake : ITrafikkDataAdapter
 	{
 		#region ITrafikkDataAdapter implementation
 

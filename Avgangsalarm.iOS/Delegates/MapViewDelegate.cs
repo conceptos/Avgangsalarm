@@ -25,8 +25,8 @@ namespace Avgangsalarm.iOS.Delegates
 		{
 			var span = new MKCoordinateSpan 
 			{
-				LatitudeDelta = 0.5,
-				LongitudeDelta = 0.5,
+				LatitudeDelta = 0.1,
+				LongitudeDelta = 0.1,
 			};
 
 			var region = new MKCoordinateRegion  

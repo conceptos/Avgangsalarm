@@ -39,14 +39,22 @@ namespace Avgangsalarm.iOS
 		{
 			_log.Info ("MonitorGeoFences: Native event: Region entered");
 			var region = GetRegion (e);
-			RegionEntered (this, region);
+
+			if (region != null) // TODO: Not tested
+			{
+				RegionEntered (this, region);
+			}
 		}
 
 		protected void OnRegionLeft(object sender, CLRegionEventArgs e)
 		{
 			_log.Info ("MonitorGeoFences: Native event: Region left");
 			var region = GetRegion (e);
-			RegionLeft (this, region);
+
+			if (region != null) // TODO: Not tested
+			{
+				RegionLeft (this, region);
+			}
 		}
 
 		void OnLocationUpdated (object sender, CLLocationsUpdatedEventArgs e)
@@ -56,7 +64,13 @@ namespace Avgangsalarm.iOS
 
 		Region GetRegion (CLRegionEventArgs e)
 		{
-			var regionEntries = Regions.Where (i => i.Value == e.Region);
+			var region = e.Region as CLCircularRegion;
+			if (e == null) 
+			{
+				return null;
+			}
+
+			var regionEntries = Regions.Where (i => i.Value.Identifier == region.Identifier);
 
 			if (regionEntries.Any()) 
 			{

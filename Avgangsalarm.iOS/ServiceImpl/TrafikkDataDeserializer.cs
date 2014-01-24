@@ -22,6 +22,7 @@ namespace Avgangsalarm.iOS.ServiceImpl
 				departure.LineRef = item ["LineRef"];
 				departure.ExpectedDepartureTime = item ["ExpectedDepartureTime"];
 				departure.DeparturePlatformName = item ["DeparturePlatformName"];
+				departure.DestinationName = item ["DestinationName"];
 				departure.DestinationDisplay = item ["DestinationDisplay"];
 				departure.InCongestion = item ["InCongestion"];
 

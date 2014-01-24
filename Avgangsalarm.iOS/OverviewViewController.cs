@@ -41,6 +41,7 @@ namespace Avgangsalarm.iOS
 			base.ViewDidLoad ();
 
 			// Perform any additional setup after loading the view, typically from a nib.
+			_update.Start ();
 		}
 
 		public override void ViewWillAppear (bool animated)

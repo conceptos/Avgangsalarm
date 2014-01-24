@@ -10,12 +10,12 @@ namespace Avgangsalarm.Core.Tests.ServiceTests
 	[TestFixture ()]
 	public class UpdateTrafikkDataTest
 	{
-		UpdateTrafikkData _sut;
+		GetTrafikkData _sut;
 
 		[SetUp]
 		public void Setup() 
 		{
-			_sut = new UpdateTrafikkData(new FakeTrafikkDataAdapter());
+			_sut = new GetTrafikkData(new TrafikkDataAdapterFake());
 		}
 
 		[Test ()]

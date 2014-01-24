@@ -7,7 +7,7 @@ namespace Avgangsalarm.Core
 		public string PublishedLineName { get; set; }
 		public string LineRef { get; set; }
 		//public string OperatorRef { get; set; }
-		//public string DestinationName { get; set; }
+		public string DestinationName { get; set; }
 		//public bool Monitored { get; set; }
 		//public string AimedArrivalTime { get; set; }
 		//public string ExpectedArrivalTime { get; set; }
