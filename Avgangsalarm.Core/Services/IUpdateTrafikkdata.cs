@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using Avgangsalarm.Core.Models;
+using System.Threading.Tasks;
 
 namespace Avgangsalarm.Core.Services
 {
 	public interface IUpdateTrafikkdata
 	{
-		IEnumerable<Departure> GetDeparturesForStop(int stopId);
+		Task<IEnumerable<Departure>> GetDeparturesForStop(int stopId);
 	}
 }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Avgangsalarm.Core.Models;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Avgangsalarm.Core.Services.Impl
 {
@@ -15,11 +16,11 @@ namespace Avgangsalarm.Core.Services.Impl
 
 		#region IUpdateTrafikkdata implementation
 
-		public IEnumerable<Departure> GetDeparturesForStop (int stopId)
+		public async Task<IEnumerable<Departure>> GetDeparturesForStop (int stopId)
 		{
 			var departures = new List<Departure> ();
 
-			var lineDepartures = _trafikkDataAdapter.GetLineDeparturesForStopId (stopId).Result;
+			var lineDepartures = await _trafikkDataAdapter.GetLineDeparturesForStopId (stopId);
 			foreach (LineDeparture ld in lineDepartures) 
 			{
 				var line = new Line (ld.LineRef, ld.PublishedLineName);
