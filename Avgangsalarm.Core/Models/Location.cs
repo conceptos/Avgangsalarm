@@ -18,6 +18,5 @@ namespace Avgangsalarm.Core
 		public Region Region { get; private set; }
 		public IEnumerable<Line> LinesToCheck  { get; private set; }
 	}
-
 }
 

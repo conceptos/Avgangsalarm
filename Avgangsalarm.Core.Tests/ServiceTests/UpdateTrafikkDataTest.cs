@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Avgangsalarm.Core.Tests
+namespace Avgangsalarm.Core.Tests.ServiceTests
 {
 	[TestFixture ()]
 	public class UpdateTrafikkDataTest
@@ -21,35 +21,16 @@ namespace Avgangsalarm.Core.Tests
 		[Test ()]
 		public void ReturnsUpdatedLines ()
 		{
-			var relevant = new List<Line> 
-			{
-				new Line("31", "Gokk!")
-		 	};
-			var departures = _sut.GetDeparturesForStop (1234, relevant);
+			var departures = _sut.GetDeparturesForStop (1234);
 			Assert.AreEqual ("31", departures.Single ().Line.Id);
 		}
 
 		[Test ()]
 		public void ReturnsCorrectDateTimes()
 		{
-			var relevant = new List<Line> 
-			{
-				new Line("31", "Gokk!")
-			};
-			var departures = _sut.GetDeparturesForStop (1234, relevant);
+			var departures = _sut.GetDeparturesForStop (1234);
 			var departureTime = departures.Single ().DepartureTime;
 			Assert.AreEqual (new DateTime(2014, 01, 22, 12, 29, 13), departureTime);
-		}
-
-		[Test ()]
-		public void DoesNotUpdateIrrelevantLines ()
-		{
-			var relevant = new List<Line> 
-			{
-				new Line("500", "Gokk!")
-			};
-			var departures = _sut.GetDeparturesForStop (1234, relevant);
-			Assert.IsFalse (departures.Any ());
 		}
 	}
 

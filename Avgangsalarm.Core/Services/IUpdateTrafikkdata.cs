@@ -6,7 +6,7 @@ namespace Avgangsalarm.Core.Services
 {
 	public interface IUpdateTrafikkdata
 	{
-		IEnumerable<Departure> GetDeparturesForStop(int stopId, IEnumerable<Line> lines);
+		IEnumerable<Departure> GetDeparturesForStop(int stopId);
 	}
 }
 

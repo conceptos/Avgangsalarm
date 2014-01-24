@@ -48,7 +48,6 @@
     <Compile Include="Services\Impl\DummyLocationRepository.cs" />
     <Compile Include="Services\IMonitorGeoFences.cs" />
     <Compile Include="Models\Region.cs" />
-    <Compile Include="Models\AlertRegion.cs" />
     <Compile Include="Models\Line.cs" />
     <Compile Include="Models\UserLocation.cs" />
     <Compile Include="Services\ITrafikkdataDeserializer.cs" />
@@ -60,6 +59,7 @@
     <Compile Include="Services\IUpdateEngine.cs" />
     <Compile Include="Services\Impl\UpdateEngine.cs" />
     <Compile Include="LogManager.cs" />
+    <Compile Include="Models\Location.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

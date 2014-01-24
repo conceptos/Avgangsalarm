@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System;
 using Avgangsalarm.Core.Services;
 
-namespace Avgangsalarm.Core.Tests
+namespace Avgangsalarm.Core.Tests.ServiceTests
 {
 	[TestFixture ()]
 	public class LogManagerTest

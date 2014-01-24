@@ -48,7 +48,7 @@ namespace Avgangsalarm.Core.Services.Impl
 
 		public void OnRegionEntered(object sender, Region e)
 		{
-			// TODO
+			_updateTrafikkData.GetDeparturesForStop (e.StopId);
 		}
 
 		public void OnRegionLeft(object sender, Region e)

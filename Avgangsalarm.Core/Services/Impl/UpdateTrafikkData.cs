@@ -15,19 +15,16 @@ namespace Avgangsalarm.Core.Services.Impl
 
 		#region IUpdateTrafikkdata implementation
 
-		public IEnumerable<Departure> GetDeparturesForStop (int stopId, IEnumerable<Line> lines)
+		public IEnumerable<Departure> GetDeparturesForStop (int stopId)
 		{
 			var departures = new List<Departure> ();
 
 			var lineDepartures = _trafikkDataAdapter.GetLineDeparturesForStopId (stopId).Result;
 			foreach (LineDeparture ld in lineDepartures) 
 			{
-				var line = lines.FirstOrDefault (i => i.Id == ld.LineRef);
-				if (line != null) 
-				{
-					var departure = new Departure(line, ld.ExpectedDepartureTime.ConvertToDate());
-					departures.Add (departure);
-				}
+				var line = new Line (ld.LineRef, ld.PublishedLineName);
+				var departure = new Departure(line, ld.ExpectedDepartureTime.ConvertToDate());
+				departures.Add (departure);
 			}
 			return departures;
 		}

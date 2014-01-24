@@ -39,6 +39,16 @@ namespace Avgangsalarm.Core.Tests.Fakes
 			return regions.Except (RemovedRegions);
 		}
 
+		public void TriggerEnterered (Region region)
+		{
+			RegionEntered (this, region);
+		}
+
+		public void TriggerLeft (Region region)
+		{
+			RegionLeft (this, region);
+		}
+
 		#endregion
 	}
 }
