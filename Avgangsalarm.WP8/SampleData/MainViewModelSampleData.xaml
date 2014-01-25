@@ -1,0 +1,12 @@
+﻿<vm:MainViewModel
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:Avgangsalarm.WP8.ViewModels">
+
+    <vm:MainViewModel.Stops>
+        <vm:StoppestedViewModel Name="Majorstuen" NextDepartures="2 min    7 min    14:28    14:36"/>
+        <vm:StoppestedViewModel Name="Nydalen T" NextDepartures="(Ikke i nærheten)"/>
+        <vm:StoppestedViewModel Name="Jernbanetorget" NextDepartures="(Ikke i nærheten)"/>
+    </vm:MainViewModel.Stops>
+
+</vm:MainViewModel>
