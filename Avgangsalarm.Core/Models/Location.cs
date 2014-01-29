@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Avgangsalarm.Core.Models;
+using System.Linq;
 
 namespace Avgangsalarm.Core
 {
@@ -17,6 +19,13 @@ namespace Avgangsalarm.Core
 		public string Name { get; private set; }
 		public Region Region { get; private set; }
 		public IEnumerable<Line> LinesToCheck  { get; private set; }
+		public IEnumerable<Departure> Departures { get; private set; }
+
+		public void UpdateDepartures (IEnumerable<Departure> departuresForStop)
+		{
+			var relevantDepartures = departuresForStop.Where (i => LinesToCheck.Contains (i.Line));
+			Departures = relevantDepartures.ToList ();
+		}
 	}
 }
 

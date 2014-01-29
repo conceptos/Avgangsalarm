@@ -14,6 +14,7 @@ namespace Avgangsalarm.iOS
 	{
 		private readonly ILog _logger = LogManager.GetLogger ( typeof(OverviewViewController));
 		private readonly IUpdateEngine _update = TinyIoCContainer.Current.Resolve<IUpdateEngine>();
+		private readonly ILocationRepository _lokasjonRepository = TinyIoCContainer.Current.Resolve<ILocationRepository>();
 
 		public OverviewViewController (IntPtr handle) : base (handle)
 		{
@@ -38,7 +39,7 @@ namespace Avgangsalarm.iOS
 
 		public override void ViewDidLoad ()
 		{
-			base.ViewDidLoad ();
+			base.ViewDidLoad ();		
 
 			// Perform any additional setup after loading the view, typically from a nib.
 			_update.Start ();
@@ -46,6 +47,9 @@ namespace Avgangsalarm.iOS
 
 		public override void ViewWillAppear (bool animated)
 		{
+			var regions = _lokasjonRepository.FetchAll ();
+			LocationListView.Source = new RegionTableViewSource (regions);;
+
 			base.ViewWillAppear (animated);
 		}
 

@@ -12,11 +12,18 @@ namespace Avgangsalarm.iOS
 	[Register ("OverviewViewController")]
 	partial class OverviewViewController
 	{
+		[Outlet]
+		MonoTouch.UIKit.UITableView LocationListView { get; set; }
+
 		[Action ("BtnAddClicked:")]
 		partial void BtnAddClicked (MonoTouch.Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (LocationListView != null) {
+				LocationListView.Dispose ();
+				LocationListView = null;
+			}
 		}
 	}
 }

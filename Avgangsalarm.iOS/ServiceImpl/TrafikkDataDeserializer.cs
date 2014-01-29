@@ -25,6 +25,7 @@ namespace Avgangsalarm.iOS.ServiceImpl
 				departure.DestinationName = item ["DestinationName"];
 				departure.DestinationDisplay = item ["DestinationDisplay"];
 				departure.InCongestion = item ["InCongestion"];
+				departure.VehicleMode = item ["VehicleMode"];
 
 				departures.Add (departure);
 			}

@@ -96,6 +96,7 @@
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
+    <None Include="AppResources.resx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -115,6 +116,9 @@
     <Compile Include="ServiceImpl\TrafikkDataDeserializer.cs" />
     <Compile Include="ServiceImpl\UpdateNotificationScreen.cs" />
     <Compile Include="TinyIoC.cs" />
+    <Compile Include="AppResources.Designer.cs" />
+    <Compile Include="ViewModels\RegionTableViewSource.cs" />
+    <Compile Include="Converters\TransportationTypeToImagePathConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -125,6 +129,11 @@
     <BundleResource Include="Resources\first%402x.png" />
     <BundleResource Include="Resources\second.png" />
     <BundleResource Include="Resources\second%402x.png" />
+    <BundleResource Include="Resources\drift_baat_SORT.png" />
+    <BundleResource Include="Resources\drift_buss_SORT.png" />
+    <BundleResource Include="Resources\drift_T-bane_SORT.png" />
+    <BundleResource Include="Resources\drift_tog_SORT.png" />
+    <BundleResource Include="Resources\drift_trikk_SORT.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -136,5 +145,7 @@
   <ItemGroup>
     <Folder Include="ServiceImpl\" />
     <Folder Include="Delegates\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
 </Project>

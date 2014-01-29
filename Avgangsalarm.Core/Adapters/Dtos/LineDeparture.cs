@@ -22,7 +22,7 @@ namespace Avgangsalarm.Core
 		//public string StopVisitNote { get; set; }
 		//public FramedVehicleJourneyRef FramedVehicleJourneyRef { get; set; }
 		//public TrainBlockPart  TrainBlockPart { get; set; }
-		//public string VehicleMode { get; set; }                   
+		public string VehicleMode { get; set; }                   
 		//public VehicleFeatureRef VehicleFeatureRef { get; set; }
 		//public string ArrivalBoardingActivity { get; set; }       
 		//public string DepartureBoardingActivity { get; set; }     

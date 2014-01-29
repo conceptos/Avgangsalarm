@@ -2,6 +2,7 @@ using System;
 using Avgangsalarm.Core.Services;
 using System.Collections.Generic;
 using System.Linq;
+using Avgangsalarm.Core.Models;
 
 namespace Avgangsalarm.Core.Services.Impl
 {
@@ -11,6 +12,7 @@ namespace Avgangsalarm.Core.Services.Impl
 		private readonly IMonitorGeoFences _monitorGeoFences;
 		private readonly IUpdateTrafikkdata _updateTrafikkData;
 		private readonly IEnumerable<IPublishUpdates> _notifiers;
+		private List<Departure> _departures = new List<Departure> (); 
 
 		private readonly ILog _logger = LogManager.GetLogger(typeof(UpdateEngine));
 		private bool _isStarted = false;
@@ -58,13 +60,22 @@ namespace Avgangsalarm.Core.Services.Impl
 			NotifyOfRelevantDepartures (e, departures);
 		}
 
-		void NotifyOfRelevantDepartures (Region e, IEnumerable<Avgangsalarm.Core.Models.Departure> departures)
+		void NotifyOfRelevantDepartures (Region e, IEnumerable<Departure> departures)
 		{
 			var locations = _locationRepository.FetchAll ().Where (i => i.Region == e);
-			var relevantLines = locations.SelectMany (i => i.LinesToCheck).Distinct ();
-			var relevantDepartures = departures.Where (i => relevantLines.Contains (i.Line));
 
-			_logger.Info ("UpdateEngine: {0} relevant updates received", relevantDepartures.Count ());
+			var relevantDepartures = new List<Departure> ();
+			foreach (var location in locations) 
+			{
+				var departuresForStop = departures.Where (i => i.StopId == location.Region.StopId);
+				location.UpdateDepartures (departuresForStop);
+				var relevant = location.Departures;
+				relevantDepartures.AddRange (relevant);
+			}
+
+			relevantDepartures = relevantDepartures.Distinct().ToList ();
+
+			_logger.Info ("UpdateEngine: {0} relevant updates received", relevantDepartures.Count);
 
 			if (_notifiers != null) 
 			{
@@ -72,7 +83,8 @@ namespace Avgangsalarm.Core.Services.Impl
 				{
 					notifyer.NotifyUpdatedDepartures (relevantDepartures);
 				}			
-			}
+			}			
+
 		}
 
 		protected void OnRegionLeft(object sender, Region e)

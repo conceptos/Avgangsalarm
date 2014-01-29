@@ -23,14 +23,22 @@ namespace Avgangsalarm.Core.Services.Impl
 			var lineDepartures = await _trafikkDataAdapter.GetLineDeparturesForStopId (stopId);
 			foreach (LineDeparture ld in lineDepartures) 
 			{
-				var line = new Line (ld.LineRef, ld.DestinationName);
-				var departure = new Departure(line, ld.ExpectedDepartureTime.ConvertToDate());
+				var departure = CreateDeparture (stopId, ld);
 				departures.Add (departure);
 			}
 			return departures;
 		}
 
 		#endregion
+
+		private static Departure CreateDeparture (int stopId, LineDeparture ld)
+		{
+			var line = new Line (ld.LineRef, ld.DestinationName);
+			var departureTime = ld.ExpectedDepartureTime.ConvertToDate ();
+			var transportationType = (TransportationType)Enum.Parse (typeof(TransportationType), ld.VehicleMode);
+			var departure = new Departure (stopId, line, departureTime, transportationType);
+			return departure;
+		}
 	}
 }
 
