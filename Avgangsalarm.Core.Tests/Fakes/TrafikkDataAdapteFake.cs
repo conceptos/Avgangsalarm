@@ -19,7 +19,7 @@ namespace Avgangsalarm.Core.Tests
 			{
 				new LineDeparture 
 				{
-					LineRef = "31",
+					LineRef = 31,
 					ExpectedDepartureTime = "/Date(1390390153000+0100)/"
 				}
 			};

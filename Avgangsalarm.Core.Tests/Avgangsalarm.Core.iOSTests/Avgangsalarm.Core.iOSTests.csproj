@@ -106,6 +106,7 @@
     <Compile Include="MonitorGeoFencesTest.cs" />
     <Compile Include="TrafikkDataAdapterTest.cs" />
     <Compile Include="Fakes\CLLocationManagerWrapperFake.cs" />
+    <Compile Include="TrafikkDataSerializerTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

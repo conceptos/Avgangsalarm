@@ -33,9 +33,9 @@ namespace Avgangsalarm.Core.Services.Impl
 
 		private static Departure CreateDeparture (int stopId, LineDeparture ld)
 		{
-			var line = new Line (ld.LineRef, ld.DestinationName);
+			var line = new Line (ld.LineRef.ToString(), ld.DestinationName);
 			var departureTime = ld.ExpectedDepartureTime.ConvertToDate ();
-			var transportationType = (TransportationType)Enum.Parse (typeof(TransportationType), ld.VehicleMode);
+			var transportationType = (TransportationType)ld.VehicleMode;
 			var departure = new Departure (stopId, line, departureTime, transportationType);
 			return departure;
 		}

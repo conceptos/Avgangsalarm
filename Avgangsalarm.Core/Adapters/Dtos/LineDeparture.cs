@@ -5,7 +5,7 @@ namespace Avgangsalarm.Core
 	public class LineDeparture
 	{
 		public string PublishedLineName { get; set; }
-		public string LineRef { get; set; }
+		public int LineRef { get; set; }
 		//public string OperatorRef { get; set; }
 		public string DestinationName { get; set; }
 		//public bool Monitored { get; set; }
@@ -22,7 +22,7 @@ namespace Avgangsalarm.Core
 		//public string StopVisitNote { get; set; }
 		//public FramedVehicleJourneyRef FramedVehicleJourneyRef { get; set; }
 		//public TrainBlockPart  TrainBlockPart { get; set; }
-		public string VehicleMode { get; set; }                   
+		public int VehicleMode { get; set; }                   
 		//public VehicleFeatureRef VehicleFeatureRef { get; set; }
 		//public string ArrivalBoardingActivity { get; set; }       
 		//public string DepartureBoardingActivity { get; set; }     
