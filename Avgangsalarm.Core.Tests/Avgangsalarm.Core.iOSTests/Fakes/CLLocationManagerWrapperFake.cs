@@ -21,21 +21,24 @@ namespace Avgangsalarm.Core.iOSTests.Fakes
 
 		#endregion
 
-		public void TriggerRegionEntered()
+		public void TriggerRegionEntered(Region r, string regionName)
 		{
-			RegionEntered (this, CreateRegion());
+			RegionEntered (this, CreateRegion(r, regionName));
 		}
 
-		public void TriggerRegionLeft()
+		public void TriggerRegionLeft(Region r, string regionName)
 		{
-			RegionLeft (this, CreateRegion());
+			RegionLeft (this, CreateRegion(r, regionName));
 		}
 
-		static CLRegionEventArgs CreateRegion ()
+		static CLRegionEventArgs CreateRegion (Region region, string name)
 		{
-			var coord = new CLLocationCoordinate2D ();
-			var region = new CLCircularRegion (coord, 1, "2");
-			return new CLRegionEventArgs (region);
+			var coord = new CLLocationCoordinate2D {
+				Latitude = region.Latitude,
+				Longitude =  region.Longitude
+			};
+			var r = new CLCircularRegion (coord, region.AlertZoneRadiusInMeters, name);
+			return new CLRegionEventArgs (r);
 		}
 
 		public IEnumerable<string> MonitoredRegionsAdded = new List<string> ();

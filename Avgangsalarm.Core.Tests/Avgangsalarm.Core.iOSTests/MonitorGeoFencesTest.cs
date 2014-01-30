@@ -94,7 +94,7 @@ namespace Avgangsalarm.Core.iOSTests
 		public void IsNotifiedWhenRegionEntered()
 		{
 			_sut.AddRegion (_region);
-			_fake.TriggerRegionEntered ();
+			_fake.TriggerRegionEntered (_region, "MonitorRegion_1");
 			Assert.IsTrue (_regionEntered);
 		}
 
@@ -102,8 +102,24 @@ namespace Avgangsalarm.Core.iOSTests
 		public void IsNotifiedWhenRegionLeft()
 		{
 			_sut.AddRegion (_region);	
-			_fake.TriggerRegionLeft ();
+			_fake.TriggerRegionLeft (_region, "MonitorRegion_1");
 			Assert.IsTrue (_regionLeft);
+		}
+
+		[Test]
+		public void IsNotNotifiedWhenUnknownRegionEntered()
+		{
+			_sut.AddRegion (_region);
+			_fake.TriggerRegionEntered (_region, "Unknown");
+			Assert.IsFalse (_regionEntered);
+		}
+
+		[Test]
+		public void IsNotNotifiedWhenRegionLeft()
+		{
+			_sut.AddRegion (_region);	
+			_fake.TriggerRegionLeft (_region, "Unknown");
+			Assert.IsFalse (_regionLeft);
 		}
 
 		void SetupLocationManagerWrapperFake ()

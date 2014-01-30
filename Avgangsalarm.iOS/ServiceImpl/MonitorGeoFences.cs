@@ -40,7 +40,7 @@ namespace Avgangsalarm.iOS
 			_log.Info ("MonitorGeoFences: Native event: Region entered");
 			var region = GetRegion (e);
 
-			if (region != null) // TODO: Not tested
+			if (region != null)
 			{
 				RegionEntered (this, region);
 			}
@@ -51,7 +51,7 @@ namespace Avgangsalarm.iOS
 			_log.Info ("MonitorGeoFences: Native event: Region left");
 			var region = GetRegion (e);
 
-			if (region != null) // TODO: Not tested
+			if (region != null)
 			{
 				RegionLeft (this, region);
 			}
