@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Avgangsalarm.Core;
 using System.Json;
 
-namespace Avgangsalarm.iOS.ServiceImpl
+namespace Avgangsalarm.iOS.Services.Impl
 {
 	public class TrafikkDataDeserializer : ITrafikkdataDeserializer
 	{

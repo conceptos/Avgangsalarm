@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 using System.Linq;
-using Avgangsalarm.iOS.ServiceImpl;
+using Avgangsalarm.iOS.Services.Impl;
 
 namespace Avgangsalarm.Core.iOSTests
 {

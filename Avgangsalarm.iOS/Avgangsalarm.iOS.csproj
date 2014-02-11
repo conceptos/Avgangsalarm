@@ -101,9 +101,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ServiceImpl\MonitorGeoFences.cs" />
-    <Compile Include="ServiceImpl\CLLocationManagerWrapper.cs" />
-    <Compile Include="ServiceImpl\ICLLocationManagerWrapper.cs" />
     <Compile Include="MapViewController.cs" />
     <Compile Include="MapViewController.designer.cs">
       <DependentUpon>MapViewController.cs</DependentUpon>
@@ -113,12 +110,18 @@
       <DependentUpon>OverviewViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Delegates\MapViewDelegate.cs" />
-    <Compile Include="ServiceImpl\TrafikkDataDeserializer.cs" />
-    <Compile Include="ServiceImpl\UpdateNotificationScreen.cs" />
     <Compile Include="TinyIoC.cs" />
     <Compile Include="AppResources.Designer.cs" />
     <Compile Include="ViewModels\RegionTableViewSource.cs" />
     <Compile Include="Converters\TransportationTypeToImagePathConverter.cs" />
+    <Compile Include="Services\Impl\MonitorGeoFences.cs" />
+    <Compile Include="Services\Impl\PublishUpdates.cs" />
+    <Compile Include="Services\Impl\TrafikkDataDeserializer.cs" />
+    <Compile Include="Services\Impl\UpdateNotificationScreen.cs" />
+    <Compile Include="Services\Impl\AppStateGateway.cs" />
+    <Compile Include="Services\IAppStateGateway.cs" />
+    <Compile Include="Services\Impl\CLLocationManagerGateway.cs" />
+    <Compile Include="Services\ICLLocationManagerGateway.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -143,9 +146,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ServiceImpl\" />
     <Folder Include="Delegates\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Converters\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

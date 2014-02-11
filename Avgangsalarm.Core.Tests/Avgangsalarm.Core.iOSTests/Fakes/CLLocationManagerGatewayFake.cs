@@ -4,10 +4,11 @@ using Avgangsalarm.iOS;
 using System.Linq;
 using MonoTouch.CoreLocation;
 using System.Collections.Generic;
+using Avgangsalarm.iOS.Services;
 
 namespace Avgangsalarm.Core.iOSTests.Fakes
 {
-	public class CLLocationManagerWrapperFake : ICLLocationManagerWrapper
+	public class CLLocationManagerGatewayFake : ICLLocationManagerGateway
 	{
 		#region ICLLocationManagerWrapper implementation
 

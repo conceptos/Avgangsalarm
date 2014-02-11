@@ -4,6 +4,7 @@ using Avgangsalarm.iOS;
 using System.Linq;
 using MonoTouch.CoreLocation;
 using Avgangsalarm.Core.iOSTests.Fakes;
+using Avgangsalarm.iOS.Services.Impl;
 
 namespace Avgangsalarm.Core.iOSTests
 {
@@ -14,7 +15,7 @@ namespace Avgangsalarm.Core.iOSTests
 
 		Region _region;
 
-		CLLocationManagerWrapperFake _fake;
+		CLLocationManagerGatewayFake _fake;
 		bool _regionEntered;
 		bool _regionLeft;
 
@@ -124,7 +125,7 @@ namespace Avgangsalarm.Core.iOSTests
 
 		void SetupLocationManagerWrapperFake ()
 		{
-			_fake = new CLLocationManagerWrapperFake ();
+			_fake = new CLLocationManagerGatewayFake ();
 			_regionEntered = false;
 			_regionLeft = false;
 		}

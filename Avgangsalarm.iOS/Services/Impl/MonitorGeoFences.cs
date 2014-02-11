@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using MonoTouch.CoreLocation;
 using System.Linq;
 
-namespace Avgangsalarm.iOS
+namespace Avgangsalarm.iOS.Services.Impl
 {
 	// http://docs.xamarin.com/guides/cross-platform/application_fundamentals/backgrounding/part_3_ios_backgrounding_techniques/updating_an_application_in_the_background/
 	// http://docs.xamarin.com/guides/cross-platform/application_fundamentals/backgrounding/part_3_ios_backgrounding_techniques/registering_applications_to_run_in_background/
@@ -16,9 +16,9 @@ namespace Avgangsalarm.iOS
 
 		private readonly ILog _log;
 		private Dictionary<Region, CLCircularRegion> Regions = new Dictionary<Region, CLCircularRegion> ();
-		ICLLocationManagerWrapper _iPhoneLocationManager;	
+		ICLLocationManagerGateway _iPhoneLocationManager;	
 
-		public MonitorGeoFences(ICLLocationManagerWrapper clLocationManagerWrapper)
+		public MonitorGeoFences(ICLLocationManagerGateway clLocationManagerWrapper)
 		{
 			_iPhoneLocationManager = clLocationManagerWrapper;
 			_iPhoneLocationManager.DesiredAccuracy = kilometer * 0.25f;

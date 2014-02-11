@@ -7,6 +7,7 @@ namespace Avgangsalarm.Core.Services
 	public interface IPublishUpdates
 	{
 		void NotifyUpdatedDepartures(IEnumerable<Departure> departure);
+		event EventHandler<IEnumerable<Departure>> DeparturesUpdated;
 	}
 }
 

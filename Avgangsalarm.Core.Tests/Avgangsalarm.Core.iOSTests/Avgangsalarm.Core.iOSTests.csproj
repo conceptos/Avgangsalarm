@@ -105,8 +105,8 @@
     <Compile Include="UnitTestAppDelegate.cs" />
     <Compile Include="MonitorGeoFencesTest.cs" />
     <Compile Include="TrafikkDataAdapterTest.cs" />
-    <Compile Include="Fakes\CLLocationManagerWrapperFake.cs" />
     <Compile Include="TrafikkDataSerializerTest.cs" />
+    <Compile Include="Fakes\CLLocationManagerGatewayFake.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

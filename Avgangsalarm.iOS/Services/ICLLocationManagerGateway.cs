@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using MonoTouch.CoreLocation;
 using System.Linq;
 
-namespace Avgangsalarm.iOS
+namespace Avgangsalarm.iOS.Services
 {
-	public interface ICLLocationManagerWrapper
+	public interface ICLLocationManagerGateway
 	{
 		void StartMonitoring (CLRegion clCircularRegion);
 		void StopMonitoring (CLRegion clCircularRegion);

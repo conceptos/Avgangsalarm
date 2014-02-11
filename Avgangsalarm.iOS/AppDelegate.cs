@@ -7,7 +7,8 @@ using TinyIoC;
 using Avgangsalarm.Core.Services;
 using Avgangsalarm.Core;
 using Avgangsalarm.Core.Services.Impl;
-using Avgangsalarm.iOS.ServiceImpl;
+using Avgangsalarm.iOS.Services.Impl;
+using Avgangsalarm.iOS.Services;
 
 namespace Avgangsalarm.iOS
 {
@@ -30,11 +31,13 @@ namespace Avgangsalarm.iOS
 
 			TinyIoCContainer.Current.Register (typeof(ILocationRepository), typeof(DummyLocationRepository)).AsSingleton ();
 			TinyIoCContainer.Current.Register (typeof(IUpdateEngine), typeof(UpdateEngine)).AsSingleton ();
+			TinyIoCContainer.Current.Register (typeof(IAppStateGateway), typeof(AppStateGateway)).AsSingleton ();
+			TinyIoCContainer.Current.Register (typeof(IPublishUpdates), typeof(PublishUpdates)).AsSingleton ();
 			TinyIoCContainer.Current.Register (typeof(IUpdateTrafikkdata), typeof(GetTrafikkData)).AsSingleton ();
 			TinyIoCContainer.Current.Register (typeof(IMonitorGeoFences), typeof(MonitorGeoFences)).AsSingleton ();
 			TinyIoCContainer.Current.Register (typeof(ITrafikkDataAdapter), typeof(TrafikkDataAdapter));
 			TinyIoCContainer.Current.Register (typeof(ITrafikkdataDeserializer), typeof(TrafikkDataDeserializer)).AsSingleton ();
-			TinyIoCContainer.Current.Register (typeof(ICLLocationManagerWrapper), typeof(CLLocationManagerWrapper)).AsSingleton ();
+			TinyIoCContainer.Current.Register (typeof(ICLLocationManagerGateway), typeof(CLLocationManagerGateway)).AsSingleton ();
 		}
 
 		// This method is invoked when the application is about to move from active to inactive state.
@@ -56,6 +59,7 @@ namespace Avgangsalarm.iOS
 		public override void WillTerminate (UIApplication application)
 		{
 		}
+
 	}
 }
 

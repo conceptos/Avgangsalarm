@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using MonoTouch.CoreLocation;
 using System.Linq;
 
-namespace Avgangsalarm.iOS
+namespace Avgangsalarm.iOS.Services.Impl
 {
-	public class CLLocationManagerWrapper : ICLLocationManagerWrapper
+	public class CLLocationManagerGateway : ICLLocationManagerGateway
 	{
 		CLLocationManager _clLocationManager;
-		public CLLocationManagerWrapper()
+		public CLLocationManagerGateway()
 		{
 			_clLocationManager = new CLLocationManager ();
 			WrapEvents ();
