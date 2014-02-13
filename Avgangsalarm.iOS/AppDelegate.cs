@@ -29,6 +29,7 @@ namespace Avgangsalarm.iOS
 			// NOTE: Don't call the base implementation on a Model class
 			// see http://docs.xamarin.com/guides/ios/application_fundamentals/delegates,_protocols,_and_events
 
+			// Set up Dependencies
 			TinyIoCContainer.Current.Register (typeof(ILocationRepository), typeof(DummyLocationRepository)).AsSingleton ();
 			TinyIoCContainer.Current.Register (typeof(IUpdateEngine), typeof(UpdateEngine)).AsSingleton ();
 			TinyIoCContainer.Current.Register (typeof(IAppStateGateway), typeof(AppStateGateway)).AsSingleton ();
@@ -58,12 +59,18 @@ namespace Avgangsalarm.iOS
 		// This method is called as part of the transiton from background to active state.
 		public override void WillEnterForeground (UIApplication application)
 		{
+			ClearPreviousNotifications ();
 		}
 		// This method is called when the application is about to terminate. Save data, if needed.
 		public override void WillTerminate (UIApplication application)
 		{
 		}
 
+		static void ClearPreviousNotifications ()
+		{
+			// Clear previous notifications
+			UIApplication.SharedApplication.CancelAllLocalNotifications();
+		}
 	}
 }
 
