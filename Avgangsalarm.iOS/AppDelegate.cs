@@ -32,7 +32,11 @@ namespace Avgangsalarm.iOS
 			TinyIoCContainer.Current.Register (typeof(ILocationRepository), typeof(DummyLocationRepository)).AsSingleton ();
 			TinyIoCContainer.Current.Register (typeof(IUpdateEngine), typeof(UpdateEngine)).AsSingleton ();
 			TinyIoCContainer.Current.Register (typeof(IAppStateGateway), typeof(AppStateGateway)).AsSingleton ();
-			TinyIoCContainer.Current.Register (typeof(IPublishUpdates), typeof(PublishUpdates)).AsSingleton ();
+			TinyIoCContainer.Current.RegisterMultiple (typeof(IPublishUpdates), 
+				new [] 
+				{
+					typeof(PublishUpdates)
+				});
 			TinyIoCContainer.Current.Register (typeof(IUpdateTrafikkdata), typeof(GetTrafikkData)).AsSingleton ();
 			TinyIoCContainer.Current.Register (typeof(IMonitorGeoFences), typeof(MonitorGeoFences)).AsSingleton ();
 			TinyIoCContainer.Current.Register (typeof(ITrafikkDataAdapter), typeof(TrafikkDataAdapter));

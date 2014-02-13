@@ -29,6 +29,11 @@ namespace Avgangsalarm.Core
 			var tuple = new Tuple<string, string> (Id, Destination);
 			return tuple.GetHashCode ();
 		}
+
+		public override string ToString ()
+		{
+			return string.Format ("{0} {1}", Id, Destination);
+		}
 	}
 }
 

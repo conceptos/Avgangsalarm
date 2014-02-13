@@ -122,6 +122,8 @@
     <Compile Include="Services\IAppStateGateway.cs" />
     <Compile Include="Services\Impl\CLLocationManagerGateway.cs" />
     <Compile Include="Services\ICLLocationManagerGateway.cs" />
+    <Compile Include="Services\Impl\UINotificationWrapper.cs" />
+    <Compile Include="Services\IUINotificatioWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />

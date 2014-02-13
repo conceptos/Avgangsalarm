@@ -15,6 +15,8 @@ namespace Avgangsalarm.Core.Tests
 		{
 			_updatedDepartures.AddRange (departure);
 		}
+
+		public event EventHandler<IEnumerable<Departure>> DeparturesUpdated;
 		#endregion
 	}
 }
