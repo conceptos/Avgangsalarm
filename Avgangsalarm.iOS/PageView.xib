@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PageViewController">
             <connections>
+                <outlet property="PageControl" destination="QaP-Vk-ZE5" id="jrq-Ky-Orw"/>
                 <outlet property="view" destination="1" id="LOj-iz-Gr3"/>
             </connections>
         </placeholder>
@@ -14,6 +15,14 @@
         <view contentMode="scaleToFill" id="1">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" id="QaP-Vk-ZE5">
+                    <rect key="frame" x="141" y="443" width="39" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="pageIndicatorTintColor" red="0.94595070484748234" green="1" blue="0.79672903692578345" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="1" green="0.96782196493803618" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </pageControl>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
         </view>

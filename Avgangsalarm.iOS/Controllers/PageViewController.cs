@@ -38,27 +38,50 @@ namespace Avgangsalarm.iOS
 		{
 			base.ViewDidLoad ();
 			
-			// Perform any additional setup after loading the view, typically from a nib.
-			_pageController = new UIPageViewController(UIPageViewControllerTransitionStyle.Scroll,
-				UIPageViewControllerNavigationOrientation.Horizontal,
-				UIPageViewControllerSpineLocation.Min);
+			SetUpPageController ();
 
+
+
+
+
+
+
+			View.AddSubview(_pageController.View);
+		}
+
+		void SetUpPageController ()
+		{
+			// Perform any additional setup after loading the view, typically from a nib.
+			_pageController = new UIPageViewController (UIPageViewControllerTransitionStyle.Scroll, UIPageViewControllerNavigationOrientation.Horizontal, UIPageViewControllerSpineLocation.Min);
 			var overviewViewController = new OverviewViewController ();
 			var mapViewController = new MapViewController ();
-
 			_subControllers.Add (overviewViewController);
 			_subControllers.Add (mapViewController);
-
-
- 			_pageController.SetViewControllers(
-				new [] { overviewViewController }, 
-				UIPageViewControllerNavigationDirection.Forward, false, 
-				s => { });
-
+			_pageController.SetViewControllers (
+				new[] { overviewViewController }, 
+				UIPageViewControllerNavigationDirection.Forward, 
+				false, s =>  { });
 			_pageController.DataSource = new PageDataSource (this);
-
 			_pageController.View.Frame = View.Bounds;
-			View.AddSubview(_pageController.View);
+			_pageController.WillTransition += SetPageIndicator;
+
+			PageControl.CurrentPage = 0;
+			PageControl.Pages = Pages.Count ();
+		}
+
+		void SetPageIndicator (object sender, UIPageViewControllerTransitionEventArgs e)
+		{
+			var nextViewController = e.PendingViewControllers.FirstOrDefault ();
+			if (nextViewController == null) 
+			{
+				return;
+			}
+
+			if(Pages.Contains(nextViewController))
+			{
+				var index = Pages.ToList().IndexOf(nextViewController);
+				PageControl.CurrentPage = index;
+			}
 		}
 	}
 
