@@ -16,10 +16,8 @@ namespace Avgangsalarm.iOS
 		private readonly IUpdateEngine _update = TinyIoCContainer.Current.Resolve<IUpdateEngine>();
 		private readonly ILocationRepository _lokasjonRepository = TinyIoCContainer.Current.Resolve<ILocationRepository>();
 
-		public OverviewViewController (IntPtr handle) : base (handle)
+		public OverviewViewController() : base("OverviewView", null)
 		{
-			Title = NSBundle.MainBundle.LocalizedString ("First", "First");
-			TabBarItem.Image = UIImage.FromBundle ("first");
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -48,7 +46,7 @@ namespace Avgangsalarm.iOS
 		public override void ViewWillAppear (bool animated)
 		{
 			var regions = _lokasjonRepository.FetchAll ();
-			LocationListView.Source = new RegionTableViewSource (regions);;
+			LocationListView.Source = new RegionTableViewSource (regions);
 
 			base.ViewWillAppear (animated);
 		}

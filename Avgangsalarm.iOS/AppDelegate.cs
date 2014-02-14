@@ -21,6 +21,7 @@ namespace Avgangsalarm.iOS
 	{
 		// class-level declarations
 		public override UIWindow Window { get; set; }
+		private UIViewController _viewController;
 
 		public override void FinishedLaunching (UIApplication application)
 		{
@@ -29,6 +30,12 @@ namespace Avgangsalarm.iOS
 
 			// Set up Dependencies
 			BuildUp ();
+
+			_viewController = new OverviewViewController ();
+
+			Window = new UIWindow (UIScreen.MainScreen.Bounds);
+			Window.RootViewController = _viewController;
+			Window.MakeKeyAndVisible ();
 		}
 
 		// This method is invoked when the application is about to move from active to inactive state.

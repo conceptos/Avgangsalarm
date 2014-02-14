@@ -19,7 +19,7 @@ namespace Avgangsalarm.iOS
 		ILog _logger = LogManager.GetLogger(typeof(MapViewController));
 		MKMapView _mapView; 
 
-		public MapViewController (IntPtr handle) : base (handle)
+		public MapViewController () : base("MapView", null)
 		{
 			_repository = TinyIoCContainer.Current.Resolve<ILocationRepository> ();
 		}

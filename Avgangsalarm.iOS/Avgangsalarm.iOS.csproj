@@ -101,14 +101,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="MapViewController.cs" />
-    <Compile Include="MapViewController.designer.cs">
-      <DependentUpon>MapViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OverviewViewController.cs" />
-    <Compile Include="OverviewViewController.designer.cs">
-      <DependentUpon>OverviewViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Delegates\MapViewDelegate.cs" />
     <Compile Include="TinyIoC.cs" />
     <Compile Include="AppResources.Designer.cs" />
@@ -124,9 +116,24 @@
     <Compile Include="Services\ICLLocationManagerGateway.cs" />
     <Compile Include="Services\Impl\UINotificationWrapper.cs" />
     <Compile Include="Services\IUINotificatioWrapper.cs" />
+    <Compile Include="OverviewViewController.cs" />
+    <Compile Include="OverviewViewController.designer.cs">
+      <DependentUpon>OverviewViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapViewController.cs" />
+    <Compile Include="MapViewController.designer.cs">
+      <DependentUpon>MapViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PageViewController.cs" />
+    <Compile Include="PageViewController.designer.cs">
+      <DependentUpon>PageViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
+    <InterfaceDefinition Include="MapView.xib" />
+    <InterfaceDefinition Include="PageView.xib" />
+    <InterfaceDefinition Include="OverviewView.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -152,5 +159,6 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Converters\" />
     <Folder Include="Services\" />
+    <Folder Include="Views\" />
   </ItemGroup>
 </Project>
