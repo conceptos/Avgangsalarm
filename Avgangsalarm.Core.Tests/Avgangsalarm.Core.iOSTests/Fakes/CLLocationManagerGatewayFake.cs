@@ -18,6 +18,8 @@ namespace Avgangsalarm.Core.iOSTests.Fakes
 
 		public event EventHandler<CLLocationsUpdatedEventArgs> LocationsUpdated;
 
+		public event EventHandler<CLAuthorizationStatus> DidChangeAuthorizationStatus;
+
 		public double DesiredAccuracy { get; set; }	
 
 		#endregion

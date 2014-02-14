@@ -9,6 +9,7 @@ namespace Avgangsalarm.iOS.Services
 {
 	public interface ICLLocationManagerGateway
 	{
+
 		void StartMonitoring (CLRegion clCircularRegion);
 		void StopMonitoring (CLRegion clCircularRegion);
 		void StartUpdatingLocation ();
@@ -17,6 +18,8 @@ namespace Avgangsalarm.iOS.Services
 		event EventHandler<CLRegionEventArgs> RegionLeft;
 		event EventHandler<CLLocationsUpdatedEventArgs> LocationsUpdated;
 		double DesiredAccuracy { get; set; }
+
+		event EventHandler<CLAuthorizationStatus> DidChangeAuthorizationStatus; // TODO: Ta hensyn til denne
 	}
 }
 

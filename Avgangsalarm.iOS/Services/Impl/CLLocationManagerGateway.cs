@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Avgangsalarm.iOS.Services.Impl
 {
-	public class CLLocationManagerGateway : ICLLocationManagerGateway
+	public class CLLocationManagerGateway : CLLocationManagerDelegate, ICLLocationManagerGateway
 	{
 		CLLocationManager _clLocationManager;
 		public CLLocationManagerGateway()
@@ -30,11 +30,17 @@ namespace Avgangsalarm.iOS.Services.Impl
 			};
 		}
 
+		public override void AuthorizationChanged (CLLocationManager manager, CLAuthorizationStatus status)
+		{
+			DidChangeAuthorizationStatus.Invoke (this, status);
+		}
+
 		#region ICLLocationManagerWrapper implementation
 
 		public event EventHandler<CLRegionEventArgs> RegionEntered = delegate {};
 		public event EventHandler<CLRegionEventArgs> RegionLeft = delegate {};
 		public event EventHandler<CLLocationsUpdatedEventArgs> LocationsUpdated = delegate {};
+		public event EventHandler<CLAuthorizationStatus> DidChangeAuthorizationStatus = delegate {};
 
 		public double DesiredAccuracy 
 		{

@@ -84,13 +84,9 @@ namespace Avgangsalarm.Core.Services.Impl
 					notifyer.NotifyUpdatedDepartures (relevantDepartures);
 				}			
 			}			
-
 		}
 
-		protected void OnRegionLeft(object sender, Region e)
-		{
-			// TODO
-		}
+		protected void OnRegionLeft(object sender, Region e) { }
 
 		private void AddAllLocationsToMonitor ()
 		{
