@@ -38,46 +38,46 @@ namespace Avgangsalarm.iOS
 		{
 			base.ViewDidLoad ();
 			
+			// Perform any additional setup after loading the view, typically from a nib.
 			SetUpPageController ();
-
 			View.AddSubview(_pageController.View);
 		}
 
 		void SetUpPageController ()
 		{
-			// Perform any additional setup after loading the view, typically from a nib.
+			SetupPageController ();
+			SetupPageNumberControl ();
+		}
+
+		void SetupPageController ()
+		{
 			_pageController = new UIPageViewController (UIPageViewControllerTransitionStyle.Scroll, UIPageViewControllerNavigationOrientation.Horizontal, UIPageViewControllerSpineLocation.Min);
 			var overviewViewController = new OverviewViewController ();
 			var mapViewController = new MapViewController ();
 			_subControllers.Add (overviewViewController);
 			_subControllers.Add (mapViewController);
-			_pageController.SetViewControllers (
-				new[] { overviewViewController }, 
-				UIPageViewControllerNavigationDirection.Forward, 
-				false, s =>  { });
+			_pageController.SetViewControllers (new[] {
+				overviewViewController
+			}, UIPageViewControllerNavigationDirection.Forward, false, s =>  {
+			});
 			_pageController.DataSource = new PageDataSource (this);
 			_pageController.View.Frame = View.Bounds;
-			_pageController.WillTransition += SetPageIndicator;
+		}
 
+		void SetupPageNumberControl ()
+		{
 			PageControl.CurrentPage = 0;
 			PageControl.Pages = Pages.Count ();
+			_pageController.DidFinishAnimating += HandleDidFinishAnimating;
 		}
 
-		void SetPageIndicator (object sender, UIPageViewControllerTransitionEventArgs e)
+		void HandleDidFinishAnimating (object sender, UIPageViewFinishedAnimationEventArgs e)
 		{
-			var nextViewController = e.PendingViewControllers.FirstOrDefault ();
-			if (nextViewController == null) 
-			{
-				return;
-			}
-
-			if(Pages.Contains(nextViewController))
-			{
-				var index = Pages.ToList().IndexOf(nextViewController);
-				PageControl.CurrentPage = index;
-			}
+			var pages = Pages.ToList ();
+			var viewController = _pageController.ViewControllers.FirstOrDefault ();
+			var index = pages.IndexOf (viewController);
+			PageControl.CurrentPage = index;
 		}
 	}
-
 }
 
