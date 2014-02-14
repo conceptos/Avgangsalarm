@@ -15,6 +15,9 @@ namespace Avgangsalarm.iOS
 		[Outlet]
 		MonoTouch.UIKit.UITableView LocationListView { get; set; }
 
+		[Outlet]
+		MonoTouch.UIKit.UINavigationBar Menu { get; set; }
+
 		[Action ("BtnAddClicked:")]
 		partial void BtnAddClicked (MonoTouch.Foundation.NSObject sender);
 		
@@ -23,6 +26,11 @@ namespace Avgangsalarm.iOS
 			if (LocationListView != null) {
 				LocationListView.Dispose ();
 				LocationListView = null;
+			}
+
+			if (Menu != null) {
+				Menu.Dispose ();
+				Menu = null;
 			}
 		}
 	}

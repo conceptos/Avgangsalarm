@@ -40,6 +40,8 @@ namespace Avgangsalarm.iOS
 			base.ViewDidLoad ();		
 
 			// Perform any additional setup after loading the view, typically from a nib.
+			SetupMenu ();
+
 			_update.Start ();
 		}
 
@@ -67,5 +69,28 @@ namespace Avgangsalarm.iOS
 		}
 
 		#endregion
+
+		void SetupMenu ()
+		{
+			var titleItem = (UINavigationItem)Menu.Items [0];
+			titleItem.LeftBarButtonItems = new [] {
+				new UIBarButtonItem (),
+				new UIBarButtonItem (UIBarButtonSystemItem.FlexibleSpace),
+			};
+
+			var addButton = new UIBarButtonItem (UIBarButtonSystemItem.Add);
+			titleItem.RightBarButtonItem = addButton;
+
+
+			addButton.Clicked += (object sender, EventArgs e) => { TodoAlert(); };
+		}
+
+		public static void TodoAlert()
+		{
+			using (var alert = new UIAlertView ("TODO Alert", "Not implemented", null, "OK", null)) 
+			{
+				alert.Show ();
+			}
+		}
 	}
 }

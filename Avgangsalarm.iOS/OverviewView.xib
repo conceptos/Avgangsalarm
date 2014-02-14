@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverviewViewController">
             <connections>
                 <outlet property="LocationListView" destination="A3a-0A-FE2" id="m2p-7K-rRN"/>
+                <outlet property="Menu" destination="PGM-8v-cq6" id="BZH-MV-gME"/>
                 <outlet property="view" destination="1" id="FDZ-g7-sis"/>
             </connections>
         </placeholder>
@@ -31,5 +32,6 @@
             </subviews>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
         </view>
+        <barButtonItem style="plain" systemItem="flexibleSpace" id="X18-5D-XIE"/>
     </objects>
 </document>

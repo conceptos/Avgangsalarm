@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
                 <outlet property="MapView" destination="8Zi-Vy-dVG" id="bhS-IE-ej5"/>
+                <outlet property="Menu" destination="9AX-Jk-SyW" id="sUe-a6-YLC"/>
                 <outlet property="view" destination="1" id="eOv-Tf-Ekx"/>
             </connections>
         </placeholder>

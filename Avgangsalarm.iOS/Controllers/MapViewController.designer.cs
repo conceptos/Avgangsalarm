@@ -14,12 +14,20 @@ namespace Avgangsalarm.iOS
 	{
 		[Outlet]
 		MonoTouch.UIKit.UIView MapView { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UINavigationBar Menu { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (MapView != null) {
 				MapView.Dispose ();
 				MapView = null;
+			}
+
+			if (Menu != null) {
+				Menu.Dispose ();
+				Menu = null;
 			}
 		}
 	}

@@ -128,6 +128,7 @@
     <Compile Include="Controllers\OverviewViewController.designer.cs">
       <DependentUpon>OverviewViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\PageDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="OverviewView.xib" />
