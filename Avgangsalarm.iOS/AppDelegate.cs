@@ -31,7 +31,7 @@ namespace Avgangsalarm.iOS
 			// Set up Dependencies
 			BuildUp ();
 
-			_viewController = new OverviewViewController ();
+			_viewController = new PageViewController ();
 
 			Window = new UIWindow (UIScreen.MainScreen.Bounds);
 			Window.RootViewController = _viewController;
@@ -50,7 +50,7 @@ namespace Avgangsalarm.iOS
 		{
 			ClearPreviousNotifications ();
 		}
-		// This method is called when the application is about to terminate. Save data, if needed.
+		// This method 	is called when the application is about to terminate. Save data, if needed.
 		public override void WillTerminate (UIApplication application) { }
 
 		static void ClearPreviousNotifications ()

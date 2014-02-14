@@ -39,7 +39,7 @@ namespace Avgangsalarm.iOS
 			base.ViewDidLoad ();
 			
 			// Perform any additional setup after loading the view, typically from a nib.
-			_pageController = new UIPageViewController(UIPageViewControllerTransitionStyle.PageCurl,
+			_pageController = new UIPageViewController(UIPageViewControllerTransitionStyle.Scroll,
 				UIPageViewControllerNavigationOrientation.Horizontal,
 				UIPageViewControllerSpineLocation.Min);
 
@@ -47,15 +47,18 @@ namespace Avgangsalarm.iOS
 			var mapViewController = new MapViewController ();
 
 			_subControllers.Add (overviewViewController);
-			//_subControllers.Add (mapViewController);
+			_subControllers.Add (mapViewController);
 
-			_pageController.DataSource = new PageDataSource (this);
 
  			_pageController.SetViewControllers(
-				_subControllers.ToArray(), 
+				new [] { overviewViewController }, 
 				UIPageViewControllerNavigationDirection.Forward, false, 
 				s => { });
 
+			_pageController.DataSource = new PageDataSource (this);
+
+			_pageController.View.Frame = View.Bounds;
+			View.AddSubview(_pageController.View);
 		}
 	}
 
@@ -79,7 +82,7 @@ namespace Avgangsalarm.iOS
 		{
 			var controllers = _parentController.Pages.ToList ();
 			var index = controllers.IndexOf (referenceViewController);
-			var next = (index >= controllers.Count) ? null :  controllers [++index];
+			var next = (++index >= controllers.Count) ? null :  controllers [index];
 			return next;
 		}
 	}

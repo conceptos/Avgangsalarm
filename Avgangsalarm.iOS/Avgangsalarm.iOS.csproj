@@ -130,7 +130,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="MainStoryboard.storyboard" />
     <InterfaceDefinition Include="MapView.xib" />
     <InterfaceDefinition Include="PageView.xib" />
     <InterfaceDefinition Include="OverviewView.xib" />

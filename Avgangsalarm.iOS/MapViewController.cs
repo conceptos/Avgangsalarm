@@ -17,7 +17,6 @@ namespace Avgangsalarm.iOS
 	{
 		ILocationRepository _repository;
 		ILog _logger = LogManager.GetLogger(typeof(MapViewController));
-		MKMapView _mapView; 
 
 		public MapViewController () : base("MapView", null)
 		{
@@ -35,10 +34,9 @@ namespace Avgangsalarm.iOS
 
 		void CreateMapView ()
 		{
-			_mapView = new MKMapView (UIScreen.MainScreen.Bounds);
-			_mapView.ShowsUserLocation = true;
-			_mapView.Delegate = new MapViewDelegate ();
-			View.InsertSubview (_mapView, 0);
+			var mapView = (MKMapView)MapView;
+			mapView.ShowsUserLocation = true;
+			mapView.Delegate = new MapViewDelegate ();		
 		}
 
 		// Dictionary<Location, IMKAnnotation> _annotationsMap = new Dictionary<Location, IMKAnnotation> ();
@@ -47,7 +45,9 @@ namespace Avgangsalarm.iOS
 		void ShowLocationsInMap ()
 		{
 			var locations = _repository.FetchAll ();
-				
+
+			var mapView = (MKMapView)MapView;
+
 			foreach (var l in locations) 
 			{
 				_logger.Info (string.Format ("MapViewController: Adding visuals for '{0}'", l.Name));
@@ -58,11 +58,11 @@ namespace Avgangsalarm.iOS
 					Coordinate = new CLLocationCoordinate2D (l.Region.Latitude, l.Region.Longitude)
 				};
 
-				_mapView.AddAnnotation (annotation);
+				mapView.AddAnnotation (annotation);
 				// _annotationsMap.Add (l, annotation);
 
 				var circleOverlay = MKCircle.Circle (annotation.Coordinate, l.Region.AlertZoneRadiusInMeters);
-				_mapView.AddOverlay (circleOverlay);
+				mapView.AddOverlay (circleOverlay);
 				// _overlaysMap.Add (l, circleOverlay);
 			}
 		}
