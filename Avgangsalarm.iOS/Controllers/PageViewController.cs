@@ -74,7 +74,8 @@ namespace Avgangsalarm.iOS
 		{
 			var controllers = _parentController.Pages.ToList ();
 			var index = controllers.IndexOf (referenceViewController);
-			var previous = (index < 1) ? null :  controllers [--index];
+			index--;
+			var previous = (index <= 0) ? null :  controllers [index];
 			return previous;
 		}
 
@@ -82,7 +83,8 @@ namespace Avgangsalarm.iOS
 		{
 			var controllers = _parentController.Pages.ToList ();
 			var index = controllers.IndexOf (referenceViewController);
-			var next = (++index >= controllers.Count) ? null :  controllers [index];
+			index++;
+			var next = (index >= controllers.Count) ? null :  controllers [index];
 			return next;
 		}
 	}
