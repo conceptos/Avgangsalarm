@@ -5,13 +5,17 @@ namespace Avgangsalarm.Core
 {
 	public class Line
 	{
-		public Line(string id, string destination)
+		public Line(string id, string destination, TransportType transport = TransportType.Undefined)
 		{
 			Id = id;
 			Destination = destination;
+		    Transport = transport;
 		}
+
 		public string Id { get; private set; }
 		public string Destination { get; set; }
+
+        public TransportType Transport { get; set; }
 
 		public override bool Equals (object obj)
 		{
@@ -35,5 +39,10 @@ namespace Avgangsalarm.Core
 			return string.Format ("{0} {1}", Id, Destination);
 		}
 	}
+
+    public enum TransportType
+    {
+        Undefined, Train, Metro, Tram, Bus, Boat
+    }
 }
 
