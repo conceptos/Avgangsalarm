@@ -14,10 +14,10 @@ namespace Avgangsalarm.Core
 			Locations = new List<Location> 
 			{
 				new Location(
-					"LokasjonId", 
-					"Min lokasjon (Carl Berner)", 
+					"LokasjonId",
+					"Min lokasjon (Carl Berner)",
 					new Region(3011400, 59.9253f, 10.778f, 300),
-					new [] { new Line("5", "Vestli") })
+					new [] { new Line("5", "Vestli", TransportType.Metro) })
 			};
 		}
 
