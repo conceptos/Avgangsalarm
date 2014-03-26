@@ -72,6 +72,12 @@ namespace Avgangsalarm.Android
 			// aapt resource value: 0x7f060002
 			public const int spinner1 = 2131099650;
 			
+			// aapt resource value: 0x7f060003
+			public const int textView1 = 2131099651;
+			
+			// aapt resource value: 0x7f060004
+			public const int toggleButton1 = 2131099652;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
